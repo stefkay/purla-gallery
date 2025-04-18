@@ -1,6 +1,6 @@
 # Purla Gallery 
 
-## This is a showcase app project for artisan artists that need to display their items.
+## This is a showcase app project for artisan artists to display their handmade items.
 
 ```yarn install```
 
