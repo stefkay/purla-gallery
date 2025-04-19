@@ -8,3 +8,8 @@ export const allProductsQuery = /* groq */ `
     price
   }
 `
+export const getProductQuery =  `
+    *[_type == "product" && defined(slug.current)][]{
+      slug
+    }
+  `
