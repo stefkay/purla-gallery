@@ -1,10 +1,10 @@
-import { ReactNode } from 'react'
-import AppHeader from '@/components/AppHeader'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { ReactNode } from 'react';
+import AppHeader from '@/components/AppHeader';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 type LayoutProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 export default function Layout({ children }: LayoutProps) {
   return (
@@ -18,5 +18,5 @@ export default function Layout({ children }: LayoutProps) {
         <p>© {new Date().getFullYear()} Purla Gallery</p>
       </footer>
     </>
-  )
+  );
 }

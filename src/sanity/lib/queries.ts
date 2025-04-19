@@ -7,9 +7,9 @@ export const allProductsQuery = /* groq */ `
     images,
     price
   }
-`
+`;
 export const getProductQuery = `
     *[_type == "product" && defined(slug.current)][]{
       slug
     }
-  `
+  `;

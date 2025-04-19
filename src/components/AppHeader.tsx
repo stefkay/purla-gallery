@@ -1,18 +1,21 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import { useTranslation } from '@/utils/translation';
 
 export default function AppHeader() {
+  const t = useTranslation();
+
   return (
     <header>
       <nav>
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">{t.home}</Link>
           </li>
           <li>
-            <Link href="/gallery">Gallery</Link>
+            <Link href="/gallery">{t.gallery}</Link>
           </li>
         </ul>
       </nav>
     </header>
-  )
+  );
 }

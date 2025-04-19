@@ -1,3 +1,6 @@
+import { useTranslation } from '@/utils/translation';
+
 export default function Home() {
-  return <div>Welcome To Purla Gallery!</div>
+  const t = useTranslation();
+  return <div>{t.welcomeToPurla}</div>;
 }

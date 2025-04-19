@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { supportedLocales, Locale } from '@/types/locale'
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { supportedLocales, Locale } from '@/types/locale';
 
 export default function LanguageSwitcher() {
-  const { asPath, locale: currentLocale } = useRouter()
+  const { asPath, locale: currentLocale } = useRouter();
 
   return (
     <div className="flex gap-2 text-sm">
@@ -22,5 +22,5 @@ export default function LanguageSwitcher() {
         </Link>
       ))}
     </div>
-  )
+  );
 }
