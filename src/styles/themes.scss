@@ -1,0 +1,33 @@
+@use './design-tokens.scss';
+
+.theme-light {
+  --color-bg: #f7f4f1;
+  --color-text: #1f2937;
+  --color-accent: #db915f;
+  --color-btn-bg: #db915f;
+  --color-btn-text: #ffffff;
+  --color-border: #e5e7eb;
+  --color-input-bg: #f9fafb;
+}
+
+.theme-dark {
+  --color-bg: #1f2937;
+  --color-text: #f7f4f1;
+  --color-accent: #db915f;
+  --color-btn-bg: #db915f;
+  --color-btn-text: #1f2937;
+  --color-border: #374151;
+  --color-input-bg: #111827;
+}
+
+.theme-earthy {
+  --color-bg: #f7f4f1;
+  --color-text: #3e2f25;
+  --color-accent: #a27551;
+  --color-btn-bg: #fb923c;
+  --color-btn-text: #1f2937;
+  --color-border: #374151;
+  --color-input-bg: #111827;
+}
+
+// we can add more themes here

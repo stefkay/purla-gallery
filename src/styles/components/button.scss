@@ -1,0 +1,27 @@
+.btn {
+  @apply rounded transition duration-150 ease-in-out;
+}
+
+.btn-primary {
+  @apply bg-btn text-btn-text hover:opacity-90;
+}
+
+.btn-secondary {
+  //@apply bg-white border border-border hover:bg-border;
+}
+
+.btn-ghost {
+  @apply bg-transparent text-text border-border hover:border-opacity-50;
+}
+
+.btn-xs {
+  @apply px-2 py-1 text-xs;
+}
+
+.btn-sm {
+  @apply px-3 py-2 text-sm;
+}
+
+.btn-md {
+  @apply px-4 py-3 text-base;
+}

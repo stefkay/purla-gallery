@@ -6,13 +6,13 @@ export default function LanguageSwitcher() {
   const { asPath, locale: currentLocale } = useRouter();
 
   return (
-    <div className="flex gap-2 text-sm">
+    <div className="flex items-start gap-2">
       {supportedLocales.map((locale: Locale) => (
         <Link
           key={locale}
           href={asPath}
           locale={locale}
-          className={`px-2 py-1 rounded border ${
+          className={`link ${
             currentLocale === locale
               ? 'bg-black text-white border-black'
               : 'bg-white text-black border-gray-300'
