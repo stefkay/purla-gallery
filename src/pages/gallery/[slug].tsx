@@ -82,8 +82,8 @@ export default function ProductPage({ product, locale }: Props) {
             />
           )}
           <div>
-            <h1 className="text-3xl font-bold mb-4">{title}</h1>
-            <p className="text-gray-700 text-lg mb-6">{description}</p>
+            <h3 className="text-3xl font-thin mb-4">{title}</h3>
+            <p className="text-lg mb-6">{description}</p>
             <p className="text-2xl font-semibold">
               {price} {currency}
             </p>
