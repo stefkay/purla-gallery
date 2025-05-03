@@ -9,7 +9,9 @@ export default function AppHeader() {
 
   return (
     <header className="flex justify-between items-center">
-      <Logo />
+      <Link href="/" className="link">
+        <Logo />
+      </Link>
       <nav className="flex justify-center space-x-8">
         <Link href="/" className="link">
           {t.home}

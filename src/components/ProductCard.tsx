@@ -21,7 +21,10 @@ export default function ProductCard(props: ProductCardProps) {
   const image = first(images);
 
   return (
-    <div key={_id} className="flex flex-col h-full bg-card rounded-md overflow-hidden shadow-card transition-transform duration-300 hover:scale-[1.02]">
+    <div
+      key={_id}
+      className="flex flex-col h-full bg-card rounded-md overflow-hidden shadow-card transition-transform duration-300"
+    >
       <Link href={`/gallery/${slug.current}`} className="block overflow-hidden">
         {image && (
           <div className="relative w-full aspect-square overflow-hidden">
