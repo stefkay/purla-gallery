@@ -1,13 +1,27 @@
 :root {
+  /* Typography */
   --font-body: 'Raleway', sans-serif;
   --font-heading: 'Playfair Display', serif;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
 
-  --radius-sm: 4px;
-  --radius-base: 8px;
-  --radius-lg: 12px;
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
 
+  /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 2rem;
+
+  /* Widths */
+  --width-container: 1024px;
+
+  /* Buttons (semantic) */
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-text: #fff;
+  --btn-border-radius: var(--radius-md);
 }

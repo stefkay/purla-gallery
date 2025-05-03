@@ -1,33 +1,142 @@
 @use './design-tokens.scss';
 
+/*
+ * Light Theme
+ * A clean, bright theme with subtle contrasts
+ */
 .theme-light {
+  /* Base Colors */
   --color-bg: #f7f4f1;
   --color-text: #1f2937;
   --color-accent: #db915f;
+
+  /* UI Elements */
   --color-btn-bg: #db915f;
   --color-btn-text: #ffffff;
   --color-border: #e5e7eb;
   --color-input-bg: #f9fafb;
+
+  /* Semantic Colors */
+  --color-primary: #db915f;
+  --color-secondary: #a27551;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Typography - Using design tokens */
+  --font-size-base: var(--text-base);
+  --font-size-sm: var(--text-sm);
+  --font-size-lg: var(--text-lg);
+
+  /* Spacing - Using design tokens */
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+
+  /* Border Radius - Using design tokens */
+  --border-radius-sm: var(--radius-sm);
+  --border-radius-md: var(--radius-md);
+  --border-radius-lg: var(--radius-lg);
+
+  /* Component-specific */
+  --card-bg: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --footer-bg: #f3f4f6;
 }
 
+/*
+ * Dark Theme
+ * A dark theme with high contrast for better readability
+ */
 .theme-dark {
+  /* Base Colors */
   --color-bg: #1f2937;
   --color-text: #f7f4f1;
   --color-accent: #db915f;
+
+  /* UI Elements */
   --color-btn-bg: #db915f;
   --color-btn-text: #1f2937;
   --color-border: #374151;
   --color-input-bg: #111827;
+
+  /* Semantic Colors */
+  --color-primary: #db915f;
+  --color-secondary: #a27551;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
+
+  /* Typography - Using design tokens */
+  --font-size-base: var(--text-base);
+  --font-size-sm: var(--text-sm);
+  --font-size-lg: var(--text-lg);
+
+  /* Spacing - Using design tokens */
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+
+  /* Border Radius - Using design tokens */
+  --border-radius-sm: var(--radius-sm);
+  --border-radius-md: var(--radius-md);
+  --border-radius-lg: var(--radius-lg);
+
+  /* Component-specific */
+  --card-bg: #2d3748;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --header-bg: rgba(17, 24, 39, 0.8);
+  --footer-bg: #111827;
 }
 
+/*
+ * Earthy Theme
+ * A warm, natural theme with earthy tones
+ */
 .theme-earthy {
+  /* Base Colors */
   --color-bg: #f7f4f1;
   --color-text: #3e2f25;
   --color-accent: #a27551;
+
+  /* UI Elements */
   --color-btn-bg: #fb923c;
   --color-btn-text: #1f2937;
   --color-border: #374151;
   --color-input-bg: #111827;
-}
 
-// we can add more themes here
+  /* Semantic Colors */
+  --color-primary: #a27551;
+  --color-secondary: #8b5cf6;
+  --color-success: #84cc16;
+  --color-warning: #eab308;
+  --color-error: #ef4444;
+  --color-info: #06b6d4;
+
+  /* Typography - Using design tokens */
+  --font-size-base: var(--text-base);
+  --font-size-sm: var(--text-sm);
+  --font-size-lg: var(--text-lg);
+
+  /* Spacing - Using design tokens */
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+
+  /* Border Radius - Using design tokens */
+  --border-radius-sm: var(--radius-sm);
+  --border-radius-md: var(--radius-md);
+  --border-radius-lg: var(--radius-lg);
+
+  /* Component-specific */
+  --card-bg: #fffbeb;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --header-bg: rgba(254, 243, 199, 0.8);
+  --footer-bg: #fef3c7;
+}
