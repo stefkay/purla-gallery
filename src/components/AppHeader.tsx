@@ -20,7 +20,7 @@ export default function AppHeader() {
           {t.gallery}
         </Link>
       </nav>
-      <div className="flex justify-end gap-4">
+      <div className="flex justify-end items-center gap-5">
         <ThemeSwitcher />
         <LanguageSwitcher />
       </div>

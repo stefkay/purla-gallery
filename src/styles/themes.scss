@@ -1,28 +1,38 @@
 @use './design-tokens.scss';
 
 /*
- * Light Theme
- * A clean, bright theme with subtle contrasts
+ * Light Theme - Pastel
+ * Based on updated daisyUI pastel theme with soft, gentle colors
  */
 .theme-light {
   /* Base Colors */
-  --color-bg: #f7f4f1;
-  --color-text: #1f2937;
-  --color-accent: #db915f;
-
-  /* UI Elements */
-  --color-btn-bg: #db915f;
-  --color-btn-text: #ffffff;
-  --color-border: #e5e7eb;
-  --color-input-bg: #f9fafb;
+  --color-bg: #ffffff;               /* --color-base-100: oklch(100% 0 0) */
+  --color-bg-secondary: #f8f9ff;     /* --color-base-200: oklch(98.462% 0.001 247.838) */
+  --color-bg-tertiary: #e8ebff;      /* --color-base-300: oklch(92.462% 0.001 247.838) */
+  --color-text: #333333;             /* --color-base-content: oklch(20% 0 0) */
+  --color-accent: #5eead4;           /* --color-accent: oklch(86% 0.127 207.078) */
 
   /* Semantic Colors */
-  --color-primary: #db915f;
-  --color-secondary: #a27551;
-  --color-success: #4ade80;
-  --color-warning: #fbbf24;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
+  --color-primary: #fbbf24;          /* --color-primary: oklch(81% 0.117 11.638) */
+  --color-primary-content: #92400e;  /* --color-primary-content: oklch(41% 0.159 10.272) */
+  --color-secondary: #d8b4fe;        /* --color-secondary: oklch(81% 0.111 293.571) */
+  --color-secondary-content: #7e22ce;/* --color-secondary-content: oklch(43% 0.232 292.759) */
+  --color-success: #4ade80;          /* --color-success: oklch(69% 0.17 162.48) */
+  --color-success-content: #166534;  /* --color-success-content: oklch(43% 0.095 166.913) */
+  --color-warning: #fb923c;          /* --color-warning: oklch(70% 0.213 47.604) */
+  --color-warning-content: #9a3412;  /* --color-warning-content: oklch(47% 0.157 37.304) */
+  --color-error: #f87171;            /* --color-error: oklch(64% 0.246 16.439) */
+  --color-error-content: #f8f9ff;    /* --color-error-content: oklch(98% 0.003 247.858) */
+  --color-info: #38bdf8;             /* --color-info: oklch(71% 0.143 215.221) */
+  --color-info-content: #0c4a6e;     /* --color-info-content: oklch(45% 0.085 224.283) */
+  --color-neutral: #818cf8;          /* --color-neutral: oklch(55% 0.046 257.417) */
+  --color-neutral-content: #f8f9ff;  /* --color-neutral-content: oklch(98% 0.003 247.858) */
+
+  /* UI Elements - Using primary color */
+  --color-btn-bg: var(--color-primary);
+  --color-btn-text: var(--color-primary-content);
+  --color-border: #e8ebff;           /* --color-base-300 */
+  --color-input-bg: #ffffff;         /* --color-base-100 */
 
   /* Typography - Using design tokens */
   --font-size-base: var(--text-base);
@@ -35,41 +45,51 @@
   --spacing-md: var(--space-md);
   --spacing-lg: var(--space-lg);
 
-  /* Border Radius - Using design tokens */
-  --border-radius-sm: var(--radius-sm);
-  --border-radius-md: var(--radius-md);
-  --border-radius-lg: var(--radius-lg);
+  /* Border Radius - Using design tokens and daisyUI */
+  --border-radius-sm: 0.5rem;        /* Smaller than daisyUI's 1rem */
+  --border-radius-md: 1rem;          /* --radius-box: 1rem */
+  --border-radius-lg: 2rem;          /* --radius-field: 2rem */
 
   /* Component-specific */
   --card-bg: #ffffff;
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   --header-bg: rgba(255, 255, 255, 0.8);
-  --footer-bg: #f3f4f6;
+  --footer-bg: #f8f9ff;              /* --color-base-200 */
 }
 
 /*
- * Dark Theme
- * A dark theme with high contrast for better readability
+ * Dark Theme - Pastel
+ * A dark theme with pastel accents for a softer contrast
  */
 .theme-dark {
   /* Base Colors */
-  --color-bg: #1f2937;
-  --color-text: #f7f4f1;
-  --color-accent: #db915f;
-
-  /* UI Elements */
-  --color-btn-bg: #db915f;
-  --color-btn-text: #1f2937;
-  --color-border: #374151;
-  --color-input-bg: #111827;
+  --color-bg: #1e293b;               /* Dark slate background */
+  --color-bg-secondary: #334155;     /* Slightly lighter slate */
+  --color-bg-tertiary: #475569;      /* Mid-tone slate for accents */
+  --color-text: #f8fafc;             /* Light slate text */
+  --color-accent: #5eead4;           /* Same accent as light theme for consistency */
 
   /* Semantic Colors */
-  --color-primary: #db915f;
-  --color-secondary: #a27551;
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #dc2626;
-  --color-info: #2563eb;
+  --color-primary: #fbbf24;          /* Same as light theme */
+  --color-primary-content: #1e293b;  /* Dark background for contrast */
+  --color-secondary: #d8b4fe;        /* Same as light theme */
+  --color-secondary-content: #1e293b;/* Dark background for contrast */
+  --color-success: #4ade80;          /* Same as light theme */
+  --color-success-content: #064e3b;  /* Darker green for contrast */
+  --color-warning: #fb923c;          /* Same as light theme */
+  --color-warning-content: #7c2d12;  /* Darker orange for contrast */
+  --color-error: #f87171;            /* Same as light theme */
+  --color-error-content: #1e293b;    /* Dark background for contrast */
+  --color-info: #38bdf8;             /* Same as light theme */
+  --color-info-content: #0c4a6e;     /* Darker blue for contrast */
+  --color-neutral: #818cf8;          /* Same as light theme */
+  --color-neutral-content: #1e293b;  /* Dark background for contrast */
+
+  /* UI Elements - Using primary color */
+  --color-btn-bg: var(--color-primary);
+  --color-btn-text: var(--color-primary-content);
+  --color-border: #475569;           /* Mid-tone for subtle borders */
+  --color-input-bg: #334155;         /* Slightly lighter than background */
 
   /* Typography - Using design tokens */
   --font-size-base: var(--text-base);
@@ -82,41 +102,51 @@
   --spacing-md: var(--space-md);
   --spacing-lg: var(--space-lg);
 
-  /* Border Radius - Using design tokens */
-  --border-radius-sm: var(--radius-sm);
-  --border-radius-md: var(--radius-md);
-  --border-radius-lg: var(--radius-lg);
+  /* Border Radius - Using design tokens and daisyUI */
+  --border-radius-sm: 0.5rem;        /* Smaller than daisyUI's 1rem */
+  --border-radius-md: 1rem;          /* --radius-box: 1rem */
+  --border-radius-lg: 2rem;          /* --radius-field: 2rem */
 
   /* Component-specific */
-  --card-bg: #2d3748;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --header-bg: rgba(17, 24, 39, 0.8);
-  --footer-bg: #111827;
+  --card-bg: #312e81;                /* Slightly lighter than background */
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(30, 27, 75, 0.9); /* Semi-transparent background */
+  --footer-bg: #1e1b4b;              /* Same as main background */
 }
 
 /*
- * Earthy Theme
- * A warm, natural theme with earthy tones
+ * Earthy Theme - Pastel
+ * A warm, natural theme with soft earthy tones
  */
 .theme-earthy {
   /* Base Colors */
-  --color-bg: #f7f4f1;
-  --color-text: #3e2f25;
-  --color-accent: #a27551;
-
-  /* UI Elements */
-  --color-btn-bg: #fb923c;
-  --color-btn-text: #1f2937;
-  --color-border: #374151;
-  --color-input-bg: #111827;
+  --color-bg: #fef3c7;               /* Soft cream background */
+  --color-bg-secondary: #fde68a;     /* Pale yellow */
+  --color-bg-tertiary: #fcd34d;      /* Soft yellow */
+  --color-text: #78350f;             /* Deep brown text */
+  --color-accent: #5eead4;           /* Teal accent for consistency with other themes */
 
   /* Semantic Colors */
-  --color-primary: #a27551;
-  --color-secondary: #8b5cf6;
-  --color-success: #84cc16;
-  --color-warning: #eab308;
-  --color-error: #ef4444;
-  --color-info: #06b6d4;
+  --color-primary: #fbbf24;          /* Same as light theme */
+  --color-primary-content: #78350f;  /* Deep brown for contrast */
+  --color-secondary: #d8b4fe;        /* Same as light theme */
+  --color-secondary-content: #581c87;/* Dark purple for contrast */
+  --color-success: #4ade80;          /* Same as light theme */
+  --color-success-content: #064e3b;  /* Dark green for contrast */
+  --color-warning: #fb923c;          /* Same as light theme */
+  --color-warning-content: #7c2d12;  /* Dark orange for contrast */
+  --color-error: #f87171;            /* Same as light theme */
+  --color-error-content: #7f1d1d;    /* Dark red for contrast */
+  --color-info: #38bdf8;             /* Same as light theme */
+  --color-info-content: #0c4a6e;     /* Dark blue for contrast */
+  --color-neutral: #818cf8;          /* Same as light theme */
+  --color-neutral-content: #312e81;  /* Dark indigo for contrast */
+
+  /* UI Elements - Using primary color */
+  --color-btn-bg: var(--color-primary);
+  --color-btn-text: var(--color-primary-content);
+  --color-border: #fcd34d;           /* Soft yellow border */
+  --color-input-bg: #fffbeb;         /* Lightest cream for inputs */
 
   /* Typography - Using design tokens */
   --font-size-base: var(--text-base);
@@ -129,14 +159,14 @@
   --spacing-md: var(--space-md);
   --spacing-lg: var(--space-lg);
 
-  /* Border Radius - Using design tokens */
-  --border-radius-sm: var(--radius-sm);
-  --border-radius-md: var(--radius-md);
-  --border-radius-lg: var(--radius-lg);
+  /* Border Radius - Using design tokens and daisyUI */
+  --border-radius-sm: 0.5rem;        /* Smaller than daisyUI's 1rem */
+  --border-radius-md: 1rem;          /* --radius-box: 1rem */
+  --border-radius-lg: 2rem;          /* --radius-field: 2rem */
 
   /* Component-specific */
-  --card-bg: #fffbeb;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --header-bg: rgba(254, 243, 199, 0.8);
-  --footer-bg: #fef3c7;
+  --card-bg: #fffbeb;                /* Lightest cream for cards */
+  --card-shadow: 0 2px 4px rgba(120, 53, 15, 0.1);
+  --header-bg: rgba(254, 243, 199, 0.9); /* Semi-transparent cream */
+  --footer-bg: #fde68a;              /* Pale yellow footer */
 }

@@ -18,16 +18,16 @@ export default function ThemeSwitcher() {
   }, []);
 
   return (
-    <div className="flex gap-2 items-start">
+    <div className="flex gap-1 items-start">
       {Object.entries(themeConfig).map(([id, { icon }]) => {
         const Icon = icon;
         return (
           <button
             key={id}
-            className={`btn btn-xs ${
+            className={`btn btn-sm ${
               theme === id
-                ? 'bg-black text-white border-black'
-                : 'bg-white text-black border-gray-300'
+                ? 'bg-primary text-primary-content'
+                : 'bg-white text-black'
             }`}
             onClick={() => setTheme(id as ThemeId)}
           >

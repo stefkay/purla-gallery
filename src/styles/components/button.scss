@@ -3,11 +3,11 @@
 }
 
 .btn-primary {
-  @apply bg-btn text-btn-text hover:opacity-90;
+  @apply bg-primary text-primary-content hover:opacity-90;
 }
 
 .btn-secondary {
-  //@apply bg-white border border-border hover:bg-border;
+  @apply bg-secondary text-secondary-content hover:opacity-90;
 }
 
 .btn-ghost {

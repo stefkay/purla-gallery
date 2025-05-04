@@ -48,7 +48,7 @@ export default function ProductCard(props: ProductCardProps) {
         <div className="mt-auto pt-2">
           <Link
             href={`/gallery/${slug.current}`}
-            className="inline-block w-full text-center py-2 px-4 bg-btn text-btn-text rounded-md hover:opacity-90 transition-opacity"
+            className="inline-block w-full text-center py-2 px-4 bg-primary text-primary-content rounded-md hover:opacity-90 transition-opacity"
           >
             {t.viewDetails}
           </Link>

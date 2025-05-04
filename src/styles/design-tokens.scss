@@ -22,6 +22,6 @@
 
   /* Buttons (semantic) */
   --btn-primary-bg: var(--color-primary);
-  --btn-primary-text: #fff;
+  --btn-primary-text: var(--color-primary-content);
   --btn-border-radius: var(--radius-md);
 }

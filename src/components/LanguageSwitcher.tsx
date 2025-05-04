@@ -6,16 +6,16 @@ export default function LanguageSwitcher() {
   const { asPath, locale: currentLocale } = useRouter();
 
   return (
-    <div className="flex items-start gap-2">
+    <div className="flex items-start gap-1">
       {supportedLocales.map((locale: Locale) => (
         <Link
           key={locale}
           href={asPath}
           locale={locale}
-          className={`link ${
+          className={`btn btn-sm ${
             currentLocale === locale
-              ? 'bg-black text-white border-black'
-              : 'bg-white text-black border-gray-300'
+              ? 'bg-primary text-primary-content'
+              : 'bg-white text-black'
           }`}
         >
           {locale.toUpperCase()}

@@ -21,12 +21,34 @@ module.exports = {
         input: 'var(--color-input-bg)',
 
         // Semantic colors
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        success: 'var(--color-success)',
-        warning: 'var(--color-warning)',
-        error: 'var(--color-error)',
-        info: 'var(--color-info)',
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          content: 'var(--color-primary-content)',
+        },
+        secondary: {
+          DEFAULT: 'var(--color-secondary)',
+          content: 'var(--color-secondary-content)',
+        },
+        success: {
+          DEFAULT: 'var(--color-success)',
+          content: 'var(--color-success-content)',
+        },
+        warning: {
+          DEFAULT: 'var(--color-warning)',
+          content: 'var(--color-warning-content)',
+        },
+        error: {
+          DEFAULT: 'var(--color-error)',
+          content: 'var(--color-error-content)',
+        },
+        info: {
+          DEFAULT: 'var(--color-info)',
+          content: 'var(--color-info-content)',
+        },
+        neutral: {
+          DEFAULT: 'var(--color-neutral)',
+          content: 'var(--color-neutral-content)',
+        },
 
         // Component-specific
         card: {
