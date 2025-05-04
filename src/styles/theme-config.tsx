@@ -1,4 +1,4 @@
-import { SunIcon, MoonIcon, FireIcon } from '@heroicons/react/24/solid';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
 
 type IconType = ForwardRefExoticComponent<
@@ -8,7 +8,7 @@ type IconType = ForwardRefExoticComponent<
   } & RefAttributes<SVGSVGElement>
 >;
 
-export type ThemeId = 'light' | 'dark' | 'earthy';
+export type ThemeId = 'light' | 'dark';
 
 type ThemeDefinition = {
   label: string;
@@ -31,10 +31,10 @@ export const themeConfig: Record<ThemeId, ThemeDefinition> = {
     palette: {
       bg: '#ffffff',
       text: '#333333',
-      accent: '#5eead4',
-      primary: '#fbbf24',
-      secondary: '#d8b4fe',
-      preview: '#fbbf24',
+      accent: '#81a1c1', // OKLCH converted to hex
+      primary: '#5e81ac', // OKLCH converted to hex
+      secondary: '#88c0d0', // OKLCH converted to hex
+      preview: '#5e81ac',
     },
     icon: SunIcon,
   },
@@ -42,26 +42,13 @@ export const themeConfig: Record<ThemeId, ThemeDefinition> = {
     label: 'Dark',
     className: 'theme-dark',
     palette: {
-      bg: '#1e293b',
-      text: '#f8fafc',
-      accent: '#5eead4',
-      primary: '#fbbf24',
-      secondary: '#d8b4fe',
-      preview: '#fbbf24',
+      bg: '#2e3440',
+      text: '#eceff4',
+      accent: '#81a1c1', // OKLCH converted to hex
+      primary: '#5e81ac', // OKLCH converted to hex
+      secondary: '#88c0d0', // OKLCH converted to hex
+      preview: '#5e81ac',
     },
     icon: MoonIcon,
-  },
-  earthy: {
-    label: 'Earthy',
-    className: 'theme-earthy',
-    palette: {
-      bg: '#fef3c7',
-      text: '#78350f',
-      accent: '#5eead4',
-      primary: '#fbbf24',
-      secondary: '#d8b4fe',
-      preview: '#fbbf24',
-    },
-    icon: FireIcon,
   },
 };

@@ -15,7 +15,7 @@ export default function LanguageSwitcher() {
           className={`btn btn-sm ${
             currentLocale === locale
               ? 'bg-primary text-primary-content'
-              : 'bg-white text-black'
+              : 'bg-transparent text-primary-content'
           }`}
         >
           {locale.toUpperCase()}

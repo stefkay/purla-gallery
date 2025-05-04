@@ -41,7 +41,7 @@ export default function ProductCard(props: ProductCardProps) {
       <div className="p-4 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-medium text-base">{title[locale]}</h3>
-          <span className="font-bold text-accent">
+          <span className="font-bold text-secondary-content flex-nowrap">
             {price[locale]} {currency}
           </span>
         </div>

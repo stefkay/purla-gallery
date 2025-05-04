@@ -13,10 +13,10 @@ export default function AppHeader() {
         <Logo />
       </Link>
       <nav className="flex justify-center space-x-8">
-        <Link href="/" className="link">
+        <Link href="/" className="link color-text text-lg">
           {t.home}
         </Link>
-        <Link href="/gallery" className="link">
+        <Link href="/gallery" className="link color-text text-lg">
           {t.gallery}
         </Link>
       </nav>

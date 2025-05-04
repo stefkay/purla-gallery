@@ -27,11 +27,11 @@ export default function ThemeSwitcher() {
             className={`btn btn-sm ${
               theme === id
                 ? 'bg-primary text-primary-content'
-                : 'bg-white text-black'
+                : 'bg-transparent text-primary-content'
             }`}
             onClick={() => setTheme(id as ThemeId)}
           >
-            <Icon className="size-4 fill-accent" />
+            <Icon className="size-4" />
           </button>
         );
       })}
