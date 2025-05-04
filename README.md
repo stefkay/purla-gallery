@@ -8,6 +8,7 @@ A showcase application for artisan artists to display their handmade items. This
 ## 🚀 Tech Stack
 
 ### Frontend
+
 - **[Next.js](https://nextjs.org/)** (v15.3) - React framework with server-side rendering and static site generation
 - **[React](https://react.dev/)** (v19) - UI library for building component-based interfaces
 - **[TypeScript](https://www.typescriptlang.org/)** (v5) - Typed JavaScript for better developer experience
@@ -16,14 +17,17 @@ A showcase application for artisan artists to display their handmade items. This
 - **[Heroicons](https://heroicons.com/)** - Beautiful hand-crafted SVG icons
 
 ### Backend & CMS
+
 - **[Sanity.io](https://www.sanity.io/)** (v3) - Headless CMS for structured content
 - **[Sanity Studio](https://www.sanity.io/studio)** - Customizable content studio
 - **[Next-Sanity](https://github.com/sanity-io/next-sanity)** - Sanity integration for Next.js
 
 ### Internationalization
+
 - Custom i18n implementation with support for English and Bulgarian
 
 ### Development Tools
+
 - **[ESLint](https://eslint.org/)** (v9) - JavaScript/TypeScript linter
 - **[Prettier](https://prettier.io/)** (v3.5) - Code formatter
 - **[TurboPack](https://turbo.build/pack)** - Next.js bundler for faster development
@@ -48,12 +52,14 @@ A showcase application for artisan artists to display their handmade items. This
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/purla-gallery.git
    cd purla-gallery
    ```
 
 2. Install dependencies for the main project:
+
    ```bash
    yarn install
    ```
@@ -68,9 +74,11 @@ A showcase application for artisan artists to display their handmade items. This
 ### Development
 
 1. Start the Next.js development server:
+
    ```bash
    yarn dev
    ```
+
    The application will be available at [http://localhost:3000](http://localhost:3000)
 
 2. Start the Sanity Studio development server:
@@ -83,6 +91,7 @@ A showcase application for artisan artists to display their handmade items. This
 ### Building for Production
 
 1. Build the Next.js application:
+
    ```bash
    yarn build
    ```

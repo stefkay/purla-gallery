@@ -19,7 +19,7 @@ export default function ThemeSwitcher() {
 
   return (
     <div className="flex gap-2 items-start">
-      {Object.entries(themeConfig).map(([id, { icon, palette }]) => {
+      {Object.entries(themeConfig).map(([id, { icon }]) => {
         const Icon = icon;
         return (
           <button
