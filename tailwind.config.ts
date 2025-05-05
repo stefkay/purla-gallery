@@ -8,7 +8,11 @@ module.exports = {
     extend: {
       colors: {
         // Base colors
-        bg: 'var(--color-bg)',
+        bg: {
+          DEFAULT: 'var(--color-bg)',
+          secondary: 'var(--color-bg-secondary)',
+          tertiary: 'var(--color-bg-tertiary)',
+        },
         text: 'var(--color-text)',
         accent: 'var(--color-accent)',
         border: 'var(--color-border)',

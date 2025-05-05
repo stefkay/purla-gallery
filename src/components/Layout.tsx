@@ -10,7 +10,6 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <AppHeader className="flex-shrink-0" />
-      {/* Add pt-20 to account for the fixed header */}
       <main className="flex-grow container mx-auto px-4 pt-20 pb-24">{children}</main>
       <AppFooter className="flex-shrink-0 mt-auto" />
     </div>
