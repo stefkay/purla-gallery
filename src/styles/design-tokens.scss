@@ -1,3 +1,17 @@
+/*
+ * Design Tokens
+ *
+ * This file defines the core design tokens for the application:
+ * - Typography: Font families and sizes
+ * - Border Radius: Consistent corner rounding
+ * - Spacing: Standard spacing values
+ * - Shadows: Elevation effects
+ * - Component-specific tokens
+ *
+ * These tokens are used by themes.scss to create consistent themes.
+ * When updating these tokens, ensure they're applied consistently across themes.
+ */
+
 :root {
   /* Typography */
   --font-body: 'Raleway', sans-serif;
@@ -6,10 +20,10 @@
   --text-base: 1rem;
   --text-lg: 1.125rem;
 
-  /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  /* Border Radius - Based on daisyUI */
+  --radius-sm: 0.5rem; /* Smaller than daisyUI's 1rem */
+  --radius-md: 1rem;   /* --radius-box: 1rem */
+  --radius-lg: 2rem;   /* --radius-field: 2rem */
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -20,7 +34,13 @@
   /* Widths */
   --width-container: 1024px;
 
-  /* Buttons (semantic) */
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.5);
+
+  /* Component Tokens */
   --btn-primary-bg: var(--color-primary);
   --btn-primary-text: var(--color-primary-content);
   --btn-border-radius: var(--radius-md);

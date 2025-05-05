@@ -35,7 +35,7 @@ A showcase application for artisan artists to display their handmade items. This
 ## 🌟 Features
 
 - **Responsive Design**: Optimized for all device sizes
-- **Theme System**: Light, dark, and earthy themes with design tokens
+- **Theme System**: Light and dark themes with design tokens
 - **Multilingual Support**: English and Bulgarian languages
 - **Product Gallery**: Grid layout with responsive cards
 - **Product Details**: Individual product pages with images and descriptions

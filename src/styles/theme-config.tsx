@@ -1,5 +1,6 @@
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
+import { colorTokens } from '@/utils/color-utils';
 
 type IconType = ForwardRefExoticComponent<
   Omit<SVGProps<SVGSVGElement>, 'ref'> & {
@@ -29,12 +30,12 @@ export const themeConfig: Record<ThemeId, ThemeDefinition> = {
     label: 'Light',
     className: 'theme-light',
     palette: {
-      bg: '#ffffff',
-      text: '#333333',
-      accent: '#81a1c1', // OKLCH converted to hex
-      primary: '#5e81ac', // OKLCH converted to hex
-      secondary: '#88c0d0', // OKLCH converted to hex
-      preview: '#5e81ac',
+      bg: colorTokens.lightBg,
+      text: colorTokens.lightText,
+      accent: colorTokens.accent,
+      primary: colorTokens.primary,
+      secondary: colorTokens.secondary,
+      preview: colorTokens.primary,
     },
     icon: SunIcon,
   },
@@ -42,12 +43,12 @@ export const themeConfig: Record<ThemeId, ThemeDefinition> = {
     label: 'Dark',
     className: 'theme-dark',
     palette: {
-      bg: '#2e3440',
-      text: '#eceff4',
-      accent: '#81a1c1', // OKLCH converted to hex
-      primary: '#5e81ac', // OKLCH converted to hex
-      secondary: '#88c0d0', // OKLCH converted to hex
-      preview: '#5e81ac',
+      bg: colorTokens.darkBg,
+      text: colorTokens.darkText,
+      accent: colorTokens.accent,
+      primary: colorTokens.primary,
+      secondary: colorTokens.secondary,
+      preview: colorTokens.primary,
     },
     icon: MoonIcon,
   },

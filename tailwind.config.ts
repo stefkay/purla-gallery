@@ -79,6 +79,10 @@ module.exports = {
         heading: 'var(--font-heading)',
       },
       boxShadow: {
+        sm: 'var(--shadow-sm)',
+        DEFAULT: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        dark: 'var(--shadow-dark)',
         card: 'var(--card-shadow)',
       },
     },
