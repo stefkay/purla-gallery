@@ -25,9 +25,7 @@ export default function ThemeSwitcher() {
           <button
             key={id}
             className={`btn btn-sm ${
-              theme === id
-                ? 'bg-primary text-primary-content'
-                : 'bg-transparent text-primary-content'
+              theme === id ? 'bg-primary text-primary-content' : 'btn-ghost'
             }`}
             onClick={() => setTheme(id as ThemeId)}
           >

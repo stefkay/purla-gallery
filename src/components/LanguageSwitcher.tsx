@@ -13,9 +13,7 @@ export default function LanguageSwitcher() {
           href={asPath}
           locale={locale}
           className={`btn btn-sm ${
-            currentLocale === locale
-              ? 'bg-primary text-primary-content'
-              : 'bg-transparent text-primary-content'
+            currentLocale === locale ? 'bg-primary text-primary-content' : 'btn-ghost'
           }`}
         >
           {locale.toUpperCase()}

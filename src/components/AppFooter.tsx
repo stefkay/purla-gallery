@@ -4,7 +4,9 @@ type AppFooterProps = {
 
 export default function AppFooter({ className = '' }: AppFooterProps) {
   return (
-    <footer className={`flex flex-col sm:flex-row sm:justify-between w-full p-4 bg-bg-secondary ${className}`}>
+    <footer
+      className={`flex flex-col sm:flex-row sm:justify-between w-full p-4 bg-bg-secondary ${className}`}
+    >
       <p className="text-sm text-text mb-2 sm:mb-0">
         © {new Date().getFullYear()} Purla Gallery. All rights reserved.
       </p>
