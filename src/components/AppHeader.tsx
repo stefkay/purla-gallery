@@ -119,7 +119,7 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
               className="fixed inset-0 z-20 md:hidden flex flex-col items-center justify-start pt-24 px-4"
             >
               {/* Menu card with solid background and shadow */}
-              <div className="menu-card bg-secondary opacity-80 py-12 px-8 rounded-lg shadow-lg w-full max-w-sm">
+              <div className="menu-card bg-secondary/80 py-12 px-8 rounded-lg shadow-lg w-full max-w-sm">
                 <nav className="flex flex-col items-center space-y-8 mb-10">
                   <Link
                     href="/"

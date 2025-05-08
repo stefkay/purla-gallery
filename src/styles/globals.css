@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Component styles */
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply rounded transition duration-150 ease-in-out;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-text border-border hover:border-opacity-50;
+  }
+
+  .btn-xs {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .btn-sm {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .btn-md {
+    @apply px-4 py-3 text-base;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-card border border-border p-4 rounded shadow;
+  }
+
+  /* Input styles */
+  .input {
+    @apply bg-bg-secondary border border-border text-text px-4 py-2 rounded w-full;
+  }
+
+  /* Link styles */
+  .link {
+    @apply text-primary hover:underline underline-offset-2;
+  }
+}

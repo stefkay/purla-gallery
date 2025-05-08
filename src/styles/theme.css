@@ -1,0 +1,91 @@
+/**
+ * Theme CSS Variables
+ * Generated from theme-config.tsx
+ */
+
+:root {
+  /* Primary Colors */
+  --color-primary: 94 129 172; /* #5e81ac */
+  --color-primary-light: 123 150 185; /* #7b96b9 */
+  --color-primary-dark: 59 94 140; /* #3b5e8c */
+
+  /* Secondary Colors */
+  --color-secondary: 136 192 208; /* #88c0d0 */
+  --color-secondary-light: 165 211 223; /* #a5d3df */
+  --color-secondary-dark: 106 163 181; /* #6aa3b5 */
+
+  /* Accent Colors */
+  --color-accent: 129 161 193; /* #81a1c1 */
+  --color-accent-light: 163 187 211; /* #a3bbd3 */
+  --color-accent-dark: 94 135 175; /* #5e87af */
+
+  /* Semantic Colors */
+  --color-success: 163 190 140; /* #a3be8c */
+  --color-warning: 235 203 139; /* #ebcb8b */
+  --color-error: 191 97 106; /* #bf616a */
+  --color-info: 180 142 173; /* #b48ead */
+  --color-neutral: 76 86 106; /* #4c566a */
+
+  /* Light Theme Colors (Default) */
+  --color-bg: 255 255 255; /* #ffffff */
+  --color-bg-secondary: 248 249 255; /* #f8f9ff */
+  --color-bg-tertiary: 232 235 255; /* #e8ebff */
+  --color-text: 51 51 51; /* #333333 */
+  --color-text-secondary: 102 102 102; /* #666666 */
+  --color-border: 232 235 255; /* #e8ebff */
+
+  /* Typography */
+  --font-body: 'Raleway', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Component Specific */
+  --header-height: 4rem;
+  --card-bg: 255 255 255; /* #ffffff */
+  --card-shadow: var(--shadow-sm);
+}
+
+/* Dark Theme */
+.dark {
+  /* Dark Theme Colors */
+  --color-bg: 46 52 64; /* #2e3440 */
+  --color-bg-secondary: 59 66 82; /* #3b4252 */
+  --color-bg-tertiary: 67 76 94; /* #434c5e */
+  --color-text: 236 239 244; /* #eceff4 */
+  --color-text-secondary: 216 222 233; /* #d8dee9 */
+  --color-border: 76 86 106; /* #4c566a */
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+
+  /* Component Specific */
+  --card-bg: 59 66 82; /* #3b4252 */
+  --card-shadow: var(--shadow-md);
+}

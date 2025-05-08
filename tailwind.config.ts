@@ -1,93 +1,90 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
-    './src/styles/**/*.{scss,css}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/layouts/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/styles/**/*.{js,ts,jsx,tsx,css}',
   ],
+  darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
       colors: {
-        // Base colors
+        // Base colors with opacity support
         bg: {
-          DEFAULT: 'var(--color-bg)',
-          secondary: 'var(--color-bg-secondary)',
-          tertiary: 'var(--color-bg-tertiary)',
+          DEFAULT: 'rgb(var(--color-bg) / <alpha-value>)',
+          secondary: 'rgb(var(--color-bg-secondary) / <alpha-value>)',
+          tertiary: 'rgb(var(--color-bg-tertiary) / <alpha-value>)',
         },
-        text: 'var(--color-text)',
-        accent: 'var(--color-accent)',
-        border: 'var(--color-border)',
-
-        // UI Elements
-        btn: {
-          DEFAULT: 'var(--color-btn-bg)',
-          text: 'var(--color-btn-text)',
+        text: {
+          DEFAULT: 'rgb(var(--color-text) / <alpha-value>)',
+          secondary: 'rgb(var(--color-text-secondary) / <alpha-value>)',
         },
-        input: 'var(--color-input-bg)',
+        border: 'rgb(var(--color-border) / <alpha-value>)',
 
-        // Semantic colors
+        // Semantic colors with opacity support
         primary: {
-          DEFAULT: 'var(--color-primary)',
-          content: 'var(--color-primary-content)',
+          DEFAULT: 'rgb(var(--color-primary) / <alpha-value>)',
+          light: 'rgb(var(--color-primary-light) / <alpha-value>)',
+          dark: 'rgb(var(--color-primary-dark) / <alpha-value>)',
         },
         secondary: {
-          DEFAULT: 'var(--color-secondary)',
-          content: 'var(--color-secondary-content)',
+          DEFAULT: 'rgb(var(--color-secondary) / <alpha-value>)',
+          light: 'rgb(var(--color-secondary-light) / <alpha-value>)',
+          dark: 'rgb(var(--color-secondary-dark) / <alpha-value>)',
         },
-        success: {
-          DEFAULT: 'var(--color-success)',
-          content: 'var(--color-success-content)',
+        accent: {
+          DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
+          light: 'rgb(var(--color-accent-light) / <alpha-value>)',
+          dark: 'rgb(var(--color-accent-dark) / <alpha-value>)',
         },
-        warning: {
-          DEFAULT: 'var(--color-warning)',
-          content: 'var(--color-warning-content)',
-        },
-        error: {
-          DEFAULT: 'var(--color-error)',
-          content: 'var(--color-error-content)',
-        },
-        info: {
-          DEFAULT: 'var(--color-info)',
-          content: 'var(--color-info-content)',
-        },
-        neutral: {
-          DEFAULT: 'var(--color-neutral)',
-          content: 'var(--color-neutral-content)',
-        },
+        success: 'rgb(var(--color-success) / <alpha-value>)',
+        warning: 'rgb(var(--color-warning) / <alpha-value>)',
+        error: 'rgb(var(--color-error) / <alpha-value>)',
+        info: 'rgb(var(--color-info) / <alpha-value>)',
+        neutral: 'rgb(var(--color-neutral) / <alpha-value>)',
 
         // Component-specific
-        card: {
-          DEFAULT: 'var(--card-bg)',
-          shadow: 'var(--card-shadow)',
-        },
-        header: 'var(--header-bg)',
-        footer: 'var(--footer-bg)',
+        card: 'rgb(var(--card-bg) / <alpha-value>)',
       },
       borderRadius: {
-        sm: 'var(--border-radius-sm)',
-        DEFAULT: 'var(--border-radius-md)',
-        lg: 'var(--border-radius-lg)',
+        sm: 'var(--radius-sm)',
+        DEFAULT: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        full: 'var(--radius-full)',
       },
       spacing: {
-        xs: 'var(--spacing-xs)',
-        sm: 'var(--spacing-sm)',
-        md: 'var(--spacing-md)',
-        lg: 'var(--spacing-lg)',
+        xs: 'var(--space-xs)',
+        sm: 'var(--space-sm)',
+        md: 'var(--space-md)',
+        lg: 'var(--space-lg)',
+        xl: 'var(--space-xl)',
       },
       fontSize: {
-        sm: 'var(--font-size-sm)',
-        base: 'var(--font-size-base)',
-        lg: 'var(--font-size-lg)',
+        xs: 'var(--text-xs)',
+        sm: 'var(--text-sm)',
+        base: 'var(--text-base)',
+        lg: 'var(--text-lg)',
+        xl: 'var(--text-xl)',
+        '2xl': 'var(--text-2xl)',
+        '3xl': 'var(--text-3xl)',
+        '4xl': 'var(--text-4xl)',
       },
       fontFamily: {
         body: 'var(--font-body)',
         heading: 'var(--font-heading)',
+        sans: 'var(--font-body)',
+        serif: 'var(--font-heading)',
       },
       boxShadow: {
         sm: 'var(--shadow-sm)',
         DEFAULT: 'var(--shadow-md)',
         lg: 'var(--shadow-lg)',
-        dark: 'var(--shadow-dark)',
         card: 'var(--card-shadow)',
+      },
+      height: {
+        header: 'var(--header-height)',
       },
     },
   },

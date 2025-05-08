@@ -1,38 +1,21 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { themeConfig, ThemeId } from '@/styles/theme-config';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
+import useTheme from '@/hooks/useTheme';
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState<ThemeId>('dark');
-
-  useEffect(() => {
-    document.documentElement.className = themeConfig[theme].className;
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('theme') as ThemeId;
-    if (stored && themeConfig[stored]) {
-      setTheme(stored);
-    }
-  }, []);
+  const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex gap-1 items-start">
-      {Object.entries(themeConfig).map(([id, { icon }]) => {
-        const Icon = icon;
-        return (
-          <button
-            key={id}
-            className={`btn btn-sm ${
-              theme === id ? 'bg-primary text-primary-content' : 'btn-ghost'
-            }`}
-            onClick={() => setTheme(id as ThemeId)}
-          >
-            <Icon className="size-4" />
-          </button>
-        );
-      })}
-    </div>
+    <button
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      className="p-2 rounded-md bg-bg-secondary/50 hover:bg-bg-tertiary/70 transition-colors"
+      aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
+    >
+      {theme === 'light' ? (
+        <MoonIcon className="w-5 h-5 text-primary" />
+      ) : (
+        <SunIcon className="w-5 h-5 text-primary" />
+      )}
+    </button>
   );
 }
