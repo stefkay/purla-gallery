@@ -1,22 +1,13 @@
 import { sanityClient } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/imageUrl';
 import Image from 'next/image';
-import Head from 'next/head';
 import { Locale } from '@/types/locale';
-import { getProductQuery } from '@/sanity/lib/queries';
 import { GetStaticPaths, GetStaticProps } from 'next';
-
-type LocalizedText = { en: string; bg: string };
-type LocalizedPrice = { en: number; bg: number };
-
-type Product = {
-  _id: string;
-  slug: { current: string };
-  title: LocalizedText;
-  description: LocalizedText;
-  price: LocalizedPrice;
-  images: { asset: { _ref: string } }[];
-};
+import ProductSEO from '@/components/ProductSEO';
+import { useTranslation } from '@/utils/translation';
+import { Product } from '@/interfaces/product';
+import { productQuery, pathsQuery } from '@/sanity/lib/queries';
+import Tag from '@/components/ui/Tag';
 
 type Props = {
   product: Product;
@@ -24,7 +15,7 @@ type Props = {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs: { slug: { current: string } }[] = await sanityClient.fetch(getProductQuery);
+  const slugs: { slug: { current: string } }[] = await sanityClient.fetch(pathsQuery);
 
   const paths = slugs.flatMap(({ slug }) => [
     { params: { slug: slug.current }, locale: 'en' },
@@ -40,12 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { slug } = params as { slug: string };
 
-  const product: Product = await sanityClient.fetch(
-    `
-    *[_type == "product" && slug.current == $slug][0]
-  `,
-    { slug }
-  );
+  const product: Product = await sanityClient.fetch(productQuery, { slug });
 
   return {
     props: {
@@ -57,21 +43,21 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 };
 
 export default function ProductPage({ product, locale }: Props) {
+  const t = useTranslation();
   const title = product.title[locale];
   const description = product.description[locale];
   const price = product.price[locale];
   const currency = locale === 'bg' ? 'лв.' : '€';
   const image = product.images?.[0];
+  const size = product.size;
+  const category = product.category.title[locale];
 
   return (
     <>
-      <Head>
-        <title>{title} – Purla</title>
-        <meta name="description" content={description} />
-      </Head>
+      <ProductSEO product={product} locale={locale} />
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+      <div className="max-w-5xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 gap-6 items-start">
           {image && (
             <Image
               src={urlFor(image).width(800).height(800).url()}
@@ -82,11 +68,26 @@ export default function ProductPage({ product, locale }: Props) {
             />
           )}
           <div>
-            <h3 className="text-3xl font-thin mb-4">{title}</h3>
-            <p className="text-lg mb-6">{description}</p>
-            <p className="text-2xl font-semibold">
-              {price} {currency}
+            <div className="flex items-center gap-2 justify-between mb-6">
+              <h3 className="text-3xl font-thin">{title}</h3>
+              <span className="text-4xl items-center whitespace-nowrap">
+                {price} {currency}
+              </span>
+            </div>
+            <p className="text-md mb-4">
+              <Tag className="tag-neutral">{category.toLowerCase()}</Tag>
             </p>
+            <p className="text-md mb-4">{description}</p>
+
+            <div className="flex gap-2 justify-start mb-6">
+              <p className="text-thin text-md">{t.size.toLowerCase()}:</p>
+              <p className="text-md">{size}</p>
+            </div>
+
+            <div className="flex items-center gap-2 justify-start">
+              <p className="text-sm">{t.productNumber}:</p>
+              <p className="text-sm font-medium whitespace-nowrap">{product.productNumber}</p>
+            </div>
           </div>
         </div>
       </div>

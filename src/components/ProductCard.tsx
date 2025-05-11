@@ -23,7 +23,7 @@ export default function ProductCard(props: ProductCardProps) {
   return (
     <div
       key={_id}
-      className="flex flex-col h-full bg-card rounded-md overflow-hidden shadow-card transition-transform duration-300"
+      className="flex flex-col h-full bg-card rounded-md overflow-hidden shadow-card transition-transform duration-300 backdrop-filter backdrop-blur-sm"
     >
       <Link href={`/gallery/${slug.current}`} className="block overflow-hidden">
         {image && (

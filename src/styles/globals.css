@@ -70,4 +70,28 @@ body {
   .link {
     @apply text-primary hover:underline underline-offset-2;
   }
+
+  .tag {
+    @apply inline-flex items-center rounded-full px-2.5 py-2 text-sm font-medium text-gray-800;
+  }
+
+  .tag-neutral {
+    @apply bg-gray-100 text-gray-800;
+  }
+
+  .tag-primary {
+    @apply bg-primary text-white;
+  }
+
+  .tag-secondary {
+    @apply bg-secondary text-white;
+  }
+
+  .tag-error {
+    @apply bg-error text-white;
+  }
+
+  .tag-success {
+    @apply bg-success text-white;
+  }
 }

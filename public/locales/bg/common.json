@@ -5,5 +5,8 @@
   "newItems": "Нови артикули",
   "welcomeToPurla": "Добре дошли в Purla Gallery",
   "addToCart": "Добави в количката",
-  "viewDetails": "Виж детайли"
+  "viewDetails": "Виж детайли",
+  "price": "цена",
+  "productNumber": "Номер на продукта",
+  "size": "Размери"
 }

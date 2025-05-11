@@ -5,5 +5,8 @@
   "newItems": "New Items",
   "welcomeToPurla": "Welcome to Purla Gallery",
   "addToCart": "Add to Cart",
-  "viewDetails": "View Details"
+  "viewDetails": "View Details",
+  "price": "Price",
+  "productNumber": "Product Number",
+  "size": "Size"
 }

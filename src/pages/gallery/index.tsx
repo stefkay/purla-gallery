@@ -1,13 +1,13 @@
 import { Product } from '@/interfaces/product';
 import { sanityClient } from '@/sanity/lib/client';
-import { allProductsQuery } from '@/sanity/lib/queries';
 import { useRouter } from 'next/router';
 import { isLocale, useTranslation } from '@/utils/translation';
 import { Locale } from '@/types/locale';
 import ProductCard from '@/components/ProductCard';
+import { productsQuery } from '@/sanity/lib/queries';
 
 export async function getStaticProps() {
-  const products: Product[] = await sanityClient.fetch(allProductsQuery);
+  const products: Product[] = await sanityClient.fetch(productsQuery);
   return { props: { products } };
 }
 
