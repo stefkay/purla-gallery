@@ -1,12 +1,13 @@
 export const tagStyles = {
-  base: 'inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium',
+  base: 'inline-flex items-center rounded-full px-2.5 py-0.5 text-sm font-medium',
   variants: {
-    neutral: 'bg-neutral-100 text-neutral-800',
-    primary: 'bg-primary-100 text-primary-800',
-    secondary: 'bg-secondary-100 text-secondary-800',
-    success: 'bg-success-100 text-success-800',
-    warning: 'bg-warning-100 text-warning-800',
-    error: 'bg-error-100 text-error-800',
+    neutral: 'bg-gray-100 text-gray-800',
+    primary: 'bg-primary text-white',
+    secondary: 'bg-secondary text-secondary-800',
+    accent: 'bg-accent text-accent-800',
+    success: 'bg-success text-success-800',
+    warning: 'bg-warning text-warning-800',
+    error: 'bg-error text-error-800',
   },
   sizes: {
     sm: 'text-xs px-2 py-0.5',
@@ -16,4 +17,4 @@ export const tagStyles = {
 } as const;
 
 export type TagVariant = keyof typeof tagStyles.variants;
-export type TagSize = keyof typeof tagStyles.sizes; 
+export type TagSize = keyof typeof tagStyles.sizes;

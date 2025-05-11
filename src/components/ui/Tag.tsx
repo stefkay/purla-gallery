@@ -8,20 +8,10 @@ interface TagProps {
   className?: string;
 }
 
-export default function Tag({ 
-  children, 
-  variant = 'neutral', 
-  size = 'md',
-  className 
-}: TagProps) {
+export default function Tag({ children, variant = 'neutral', size = 'md', className }: TagProps) {
   return (
-    <span 
-      className={cn(
-        tagStyles.base,
-        tagStyles.variants[variant],
-        tagStyles.sizes[size],
-        className
-      )}
+    <span
+      className={cn(tagStyles.base, tagStyles.variants[variant], tagStyles.sizes[size], className)}
     >
       {children}
     </span>

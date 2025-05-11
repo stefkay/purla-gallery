@@ -75,7 +75,9 @@ export default function ProductPage({ product, locale }: Props) {
               </span>
             </div>
             <p className="text-md mb-4">
-              <Tag className="tag-neutral">{category.toLowerCase()}</Tag>
+              <Tag variant="accent" size="lg">
+                {category.toLowerCase()}
+              </Tag>
             </p>
             <p className="text-md mb-4">{description}</p>
 
