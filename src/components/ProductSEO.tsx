@@ -1,8 +1,16 @@
 import Head from 'next/head';
 import { urlFor } from '@/sanity/lib/imageUrl';
+import { Product } from '@/interfaces/product';
+import { Locale } from '@/types/locale';
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
-export default function ProductSEO({ product, locale = 'en' }) {
+interface ProductSEOProps {
+  product: Product;
+  locale: Locale;
+}
+
+export default function ProductSEO({ product, locale = 'en' }: ProductSEOProps) {
   const structuredData = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
