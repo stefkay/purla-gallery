@@ -157,8 +157,7 @@ export const productType = defineType({
       validation: (Rule) =>
         Rule.required().regex(/^PRL-\d+$/, {
           name: 'prl-format',
-          invert: false,
-          message: 'Format must be PRL- followed by numbers (e.g., PRL-001)',
+          invert: false
         }),
     },
   ],
