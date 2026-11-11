@@ -5,34 +5,34 @@
 
 :root {
   /* Primary Colors */
-  --color-primary: 94 129 172; /* #5e81ac */
-  --color-primary-light: 123 150 185; /* #7b96b9 */
-  --color-primary-dark: 59 94 140; /* #3b5e8c */
+  --color-primary: 2 115 132; /* #027184 - Medium Teal */
+  --color-primary-light: 1 147 165; /* #0193A5 - Bright Teal */
+  --color-primary-dark: 0 74 89; /* #004A59 - Deep Teal */
 
   /* Secondary Colors */
-  --color-secondary: 136 192 208; /* #88c0d0 */
-  --color-secondary-light: 165 211 223; /* #a5d3df */
-  --color-secondary-dark: 106 163 181; /* #6aa3b5 */
+  --color-secondary: 241 103 68; /* #F16744 - Vibrant Coral */
+  --color-secondary-light: 246 162 120; /* #F6A278 - Light Peach */
+  --color-secondary-dark: 199 54 24; /* #C73618 - Deep Brick Red */
 
   /* Accent Colors */
-  --color-accent: 129 161 193; /* #81a1c1 */
-  --color-accent-light: 163 187 211; /* #a3bbd3 */
-  --color-accent-dark: 94 135 175; /* #5e87af */
+  --color-accent: 1 147 165; /* #0193A5 - Bright Teal/Aqua */
+  --color-accent-light: 2 115 132; /* #027184 - Medium Teal */
+  --color-accent-dark: 0 74 89; /* #004A59 - Deep Teal */
 
   /* Semantic Colors */
-  --color-success: 163 190 140; /* #a3be8c */
-  --color-warning: 235 203 139; /* #ebcb8b */
-  --color-error: 191 97 106; /* #bf616a */
-  --color-info: 180 142 173; /* #b48ead */
-  --color-neutral: 76 86 106; /* #4c566a */
+  --color-success: 1 147 165; /* #0193A5 - Bright Teal */
+  --color-warning: 246 162 120; /* #F6A278 - Light Peach */
+  --color-error: 199 54 24; /* #C73618 - Deep Brick Red */
+  --color-info: 2 115 132; /* #027184 - Medium Teal */
+  --color-neutral: 0 74 89; /* #004A59 - Deep Teal */
 
   /* Light Theme Colors (Default) */
   --color-bg: 255 255 255; /* #ffffff */
-  --color-bg-secondary: 248 249 255; /* #f8f9ff */
-  --color-bg-tertiary: 232 235 255; /* #e8ebff */
-  --color-text: 51 51 51; /* #333333 */
-  --color-text-secondary: 102 102 102; /* #666666 */
-  --color-border: 232 235 255; /* #e8ebff */
+  --color-bg-secondary: 246 162 120; /* #F6A278 - Light Peach (10% opacity) */
+  --color-bg-tertiary: 241 103 68; /* #F16744 - Vibrant Coral (5% opacity) */
+  --color-text: 0 74 89; /* #004A59 - Deep Teal */
+  --color-text-secondary: 2 115 132; /* #027184 - Medium Teal */
+  --color-border: 246 162 120; /* #F6A278 - Light Peach (20% opacity) */
 
   /* Typography */
   --font-body: 'Raleway', sans-serif;
@@ -73,12 +73,12 @@
 /* Dark Theme */
 .dark {
   /* Dark Theme Colors */
-  --color-bg: 46 52 64; /* #2e3440 */
-  --color-bg-secondary: 59 66 82; /* #3b4252 */
-  --color-bg-tertiary: 67 76 94; /* #434c5e */
-  --color-text: 236 239 244; /* #eceff4 */
-  --color-text-secondary: 216 222 233; /* #d8dee9 */
-  --color-border: 76 86 106; /* #4c566a */
+  --color-bg: 0 74 89; /* #004A59 - Deep Teal */
+  --color-bg-secondary: 2 115 132; /* #027184 - Medium Teal */
+  --color-bg-tertiary: 1 147 165; /* #0193A5 - Bright Teal */
+  --color-text: 255 255 255; /* #ffffff */
+  --color-text-secondary: 246 162 120; /* #F6A278 - Light Peach */
+  --color-border: 1 147 165; /* #0193A5 - Bright Teal */
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -86,6 +86,6 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
 
   /* Component Specific */
-  --card-bg: 59 66 82; /* #3b4252 */
+  --card-bg: 2 115 132; /* #027184 - Medium Teal */
   --card-shadow: var(--shadow-md);
 }

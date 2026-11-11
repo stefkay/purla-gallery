@@ -14,9 +14,9 @@ export type ThemeId = 'light' | 'dark';
 export const colors = {
   // Primary Colors - Nord Theme
   primary: {
-    DEFAULT: '#5e81ac', // RGB: 94 129 172
-    light: '#7b96b9', // RGB: 123 150 185
-    dark: '#3b5e8c', // RGB: 59 94 140
+    DEFAULT: '#5e81ac', // RGB: 94 129 172 /* #5E81AC */
+    light: '#7b96b9', // RGB: 123 150 185 /* #7B96B9 */
+    dark: '#0D355B', // RGB 13 53 91; /* #0D355B 13 53 91
   },
 
   // Secondary Colors
@@ -35,7 +35,7 @@ export const colors = {
 
   // Semantic Colors
   success: '#a3be8c', // RGB: 163 190 140
-  warning: '#ebcb8b', // RGB: 235 203 139
+  warning: '#f2c57c', // RGB: 242 197 124;  /* #F2C57C
   error: '#bf616a', // RGB: 191 97 106
   info: '#b48ead', // RGB: 180 142 173
   neutral: '#4c566a', // RGB: 76 86 106

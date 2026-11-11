@@ -46,8 +46,6 @@ export default function ProductPage({ product, locale }: Props) {
   const t = useTranslation();
   const title = product.title[locale];
   const description = product.description[locale];
-  const price = product.price[locale];
-  const currency = locale === 'bg' ? 'лв.' : '€';
   const image = product.images?.[0];
   const size = product.size;
   const category = product.category.title[locale];
@@ -64,7 +62,7 @@ export default function ProductPage({ product, locale }: Props) {
               alt={title}
               width={800}
               height={800}
-              className="rounded"
+              className="rounded-md"
             />
           )}
           <div>
@@ -76,6 +74,21 @@ export default function ProductPage({ product, locale }: Props) {
             </div>
             <p className="text-md mb-4">
               <Tag variant="accent" size="lg">
+                {category.toLowerCase()}
+              </Tag>
+              <Tag variant="primary" size="lg">
+                {category.toLowerCase()}
+              </Tag>
+              <Tag variant="secondary" size="lg">
+                {category.toLowerCase()}
+              </Tag>
+              <Tag variant="success" size="lg">
+                {category.toLowerCase()}
+              </Tag>
+              <Tag variant="warning" size="lg">
+                {category.toLowerCase()}
+              </Tag>
+              <Tag variant="error" size="lg">
                 {category.toLowerCase()}
               </Tag>
             </p>

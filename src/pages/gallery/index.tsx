@@ -30,3 +30,4 @@ const Gallery = ({ products }: { products: Product[] }) => {
 };
 
 export default Gallery;
+

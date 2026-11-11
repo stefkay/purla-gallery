@@ -13,17 +13,16 @@ interface ProductCardProps {
 
 export default function ProductCard(props: ProductCardProps) {
   const {
-    product: { _id, images, title, slug, price },
+    product: { _id, images, title, slug },
     locale,
   } = props;
   const t = useTranslation();
-  const currency = locale === ('bg' as Locale) ? 'лв.' : '€';
   const image = first(images);
 
   return (
     <div
       key={_id}
-      className="flex flex-col h-full bg-card rounded-md overflow-hidden shadow-card transition-transform duration-300 backdrop-filter backdrop-blur-sm"
+      className="group flex flex-col h-full bg-card rounded-sm overflow-hidden shadow-card hover:shadow-lg transition-all duration-300 backdrop-filter backdrop-blur-sm"
     >
       <Link href={`/gallery/${slug.current}`} className="block overflow-hidden">
         {image && (
@@ -33,22 +32,19 @@ export default function ProductCard(props: ProductCardProps) {
               alt={title[locale]}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className="object-cover transition-transform duration-300 hover:scale-110"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         )}
       </Link>
       <div className="p-4 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-medium text-base">{title[locale]}</h3>
-          <span className="font-bold text-secondary-content flex-nowrap">
-            {price[locale]} {currency}
-          </span>
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="font-medium text-base text-text line-clamp-2">{title[locale]}</h3>
         </div>
-        <div className="mt-auto pt-2">
+        <div className="mt-auto pt-3">
           <Link
             href={`/gallery/${slug.current}`}
-            className="inline-block w-full text-center py-2 px-4 bg-primary text-primary-content rounded-md hover:opacity-90 transition-opacity"
+            className="inline-block w-full text-center py-2.5 px-4 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors duration-200 font-medium"
           >
             {t.viewDetails}
           </Link>
