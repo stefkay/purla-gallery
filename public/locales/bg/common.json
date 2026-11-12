@@ -1,5 +1,12 @@
 {
   "home": "Начало",
+  "allPieces": "Всички бижута",
+  "gridView": "Мрежа",
+  "listView": "Списък",
+  "galleryFilters": "Филтриране по категория",
+  "galleryView": "Изглед на галерията",
+  "pieceCount": "бижута",
+  "noPieces": "Все още няма бижута в тази категория.",
   "gallery": "Галерия",
   "subscribe": "Абонирайте се",
   "newItems": "Нови артикули",

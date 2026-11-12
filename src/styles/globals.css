@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes gallery-entrance {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery-results {
+  animation: gallery-entrance 350ms ease-out both;
+}
+
 /* Base styles */
 html,
 body {

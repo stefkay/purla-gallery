@@ -12,7 +12,7 @@ export type Product = {
   price: LocalizedNumber;
   productNumber: string;
   availability: 'in_stock' | 'preorder' | 'out_of_stock';
-  category: { title: LocalizedString };
+  category: { title: LocalizedString; slug?: { current: string } };
   size?: string;
   materials?: string[];
   tags?: string[];

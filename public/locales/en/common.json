@@ -1,5 +1,12 @@
 {
   "home": "Home",
+  "allPieces": "All pieces",
+  "gridView": "Grid",
+  "listView": "Index",
+  "galleryFilters": "Filter by category",
+  "galleryView": "Gallery view",
+  "pieceCount": "pieces",
+  "noPieces": "No pieces in this category yet.",
   "gallery": "Gallery",
   "subscribe": "Subscribe",
   "newItems": "New Items",
