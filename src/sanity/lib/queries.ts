@@ -35,8 +35,11 @@ export const productQuery = `
       availability,
       images[]{asset->{url}, alt},
       thumbnail{asset->{url}, alt},
+      materials,
+      tags,
       category->{
-        title
+        title,
+        slug
       }
     }
   `;

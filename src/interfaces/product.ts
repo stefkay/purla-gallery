@@ -7,11 +7,13 @@ export type Product = {
   description: LocalizedString;
   metaTitle?: LocalizedString;
   metaDescription?: LocalizedString;
-  images: { asset: { _ref: string } }[];
+  images: { asset: { _ref: string; url?: string }; alt?: string }[];
   thumbnail: { asset: { _ref: string } };
   price: LocalizedNumber;
   productNumber: string;
   availability: 'in_stock' | 'preorder' | 'out_of_stock';
   category: { title: LocalizedString };
-  size: string;
+  size?: string;
+  materials?: string[];
+  tags?: string[];
 };

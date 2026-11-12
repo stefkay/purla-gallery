@@ -18,9 +18,11 @@ const Gallery = ({ products }: { products: Product[] }) => {
   const t = useTranslation();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-heading mb-8">{t.gallery}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="mx-auto max-w-[1440px] px-5 py-10 sm:px-8 lg:px-12 lg:py-16">
+      <div className="mb-8 flex items-end justify-between border-b editorial-rule pb-5 sm:mb-10">
+        <h1 className="font-heading text-5xl leading-none sm:text-6xl">{t.gallery}</h1>
+      </div>
+      <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4">
         {products.map((product) => (
           <ProductCard key={product._id} product={product} locale={locale} />
         ))}

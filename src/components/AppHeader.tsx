@@ -3,7 +3,7 @@ import { useTranslation } from '@/utils/translation';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import Logo from '@/components/Logo';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 type AppHeaderProps = {
   className?: string;
@@ -13,136 +13,76 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
   const t = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Close menu when clicking outside or pressing escape
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsMenuOpen(false);
-      }
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false);
     };
 
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      // Check if the click is outside both the menu card and the menu button
-      if (!target.closest('.menu-card') && !target.closest('#menu-button')) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
   }, []);
 
-  // Prevent scrolling when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
 
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header
-      className={`w-full fixed top-0 left-0 z-50 bg-bg/95 backdrop-blur-sm shadow-sm ${className}`}
+      className={`fixed left-0 top-0 z-50 w-full border-b editorial-rule bg-bg/95 backdrop-blur-sm ${className}`}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="transition-opacity duration-200 hover:opacity-80 z-20">
+      <div className="mx-auto flex h-[var(--header-height)] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+        <Link href="/" onClick={closeMenu} className="relative z-30 -ml-2 transition-opacity hover:opacity-60">
           <Logo />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex justify-center space-x-8">
-          <Link
-            href="/"
-            className="text-text hover:text-primary transition-colors duration-200 font-medium text-lg"
-          >
+        <nav aria-label="Primary navigation" className="hidden items-center gap-10 md:flex">
+          <Link href="/" className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary">
             {t.home}
           </Link>
-          <Link
-            href="/gallery"
-            className="text-text hover:text-primary transition-colors duration-200 font-medium text-lg"
-          >
+          <Link href="/gallery" className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary">
             {t.gallery}
           </Link>
         </nav>
 
-        <div className="hidden md:flex justify-end items-center gap-5">
-          <ThemeSwitcher />
+        <div className="hidden items-center gap-5 md:flex">
           <LanguageSwitcher />
+          <ThemeSwitcher />
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           id="menu-button"
-          className="md:hidden z-20 p-2 focus:outline-none"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          type="button"
+          aria-controls="mobile-menu"
+          aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          className="relative z-30 flex h-10 w-10 items-center justify-center md:hidden"
+          onClick={() => setIsMenuOpen((open) => !open)}
         >
-          <div className="w-6 flex flex-col gap-1.5 items-end">
-            <span
-              className={`block h-0.5 bg-text transition-all duration-300 ease-out ${
-                isMenuOpen ? 'w-6 -rotate-45 translate-y-2' : 'w-6'
-              }`}
-            ></span>
-            <span
-              className={`block h-0.5 bg-text transition-all duration-300 ease-out ${
-                isMenuOpen ? 'w-0 opacity-0' : 'w-4'
-              }`}
-            ></span>
-            <span
-              className={`block h-0.5 bg-text transition-all duration-300 ease-out ${
-                isMenuOpen ? 'w-6 rotate-45 -translate-y-2' : 'w-5'
-              }`}
-            ></span>
-          </div>
+          <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
+          <span className={`absolute h-px w-6 bg-text transition-transform ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+          <span className={`absolute h-px w-6 bg-text transition-transform ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
         </button>
 
-        {/* Mobile Menu - Two-layer approach for better cross-browser support */}
         {isMenuOpen && (
-          <>
-            {/* Backdrop overlay - solid color with high opacity */}
-            <div className="fixed inset-0 z-10 md:hidden bg-bg/75"></div>
-
-            {/* Menu container */}
-            <div
-              id="mobile-menu"
-              className="fixed inset-0 z-20 md:hidden flex flex-col items-center justify-start pt-24 px-4"
-            >
-              {/* Menu card with solid background and shadow */}
-              <div className="menu-card bg-secondary/80 py-12 px-8 rounded-lg shadow-lg w-full max-w-sm">
-                <nav className="flex flex-col items-center space-y-8 mb-10">
-                  <Link
-                    href="/"
-                    className="text-text hover:text-primary transition-colors duration-200 font-medium text-2xl"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {t.home}
-                  </Link>
-                  <Link
-                    href="/gallery"
-                    className="text-text hover:text-primary transition-colors duration-200 font-medium text-2xl"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {t.gallery}
-                  </Link>
-                </nav>
-                <div className="flex items-center justify-center gap-8 pt-4 border-t border-bg-tertiary">
-                  <ThemeSwitcher />
-                  <LanguageSwitcher />
-                </div>
-              </div>
+          <div id="mobile-menu" className="fixed inset-0 z-20 flex flex-col bg-bg px-6 pb-10 pt-32 md:hidden">
+            <nav aria-label="Mobile navigation" className="flex flex-col gap-6 border-y editorial-rule py-8">
+              <Link href="/" onClick={closeMenu} className="font-heading text-5xl leading-none">
+                {t.home}
+              </Link>
+              <Link href="/gallery" onClick={closeMenu} className="font-heading text-5xl leading-none">
+                {t.gallery}
+              </Link>
+            </nav>
+            <div className="mt-auto flex items-center justify-between border-t editorial-rule pt-6">
+              <LanguageSwitcher />
+              <ThemeSwitcher />
             </div>
-          </>
+          </div>
         )}
       </div>
     </header>

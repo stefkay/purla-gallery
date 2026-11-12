@@ -8,7 +8,7 @@ export default function ThemeSwitcher() {
   return (
     <button
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="p-2.5 rounded-lg bg-bg-secondary/50 hover:bg-bg-tertiary/70 focus:outline-none transition-all duration-200"
+      className="p-2 text-text-secondary transition-colors duration-200 hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-text"
       aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
     >
       {theme === 'light' ? (

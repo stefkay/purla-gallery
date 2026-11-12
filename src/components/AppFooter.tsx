@@ -5,13 +5,13 @@ type AppFooterProps = {
 export default function AppFooter({ className = '' }: AppFooterProps) {
   return (
     <footer
-      className={`flex flex-col sm:flex-row sm:justify-between w-full p-4 bg-bg-secondary ${className}`}
+      className={`mx-auto flex w-full max-w-[1440px] flex-col gap-3 border-t editorial-rule px-5 py-8 text-text-secondary sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12 ${className}`}
     >
-      <p className="text-sm text-text mb-2 sm:mb-0">
+      <p className="text-xs tracking-[0.08em] sm:mb-0">
         © {new Date().getFullYear()} Purla Gallery. All rights reserved.
       </p>
-      <p className="text-sm text-text">
-        Made with <span className="text-primary">❤️</span> by Purla Index
+      <p className="text-xs tracking-[0.08em]">
+        An independent jewelry portfolio
       </p>
     </footer>
   );

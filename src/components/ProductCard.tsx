@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/imageUrl';
 import Link from 'next/link';
 import { Locale } from '@/types/locale';
-import { first } from 'lodash';
 import { useTranslation } from '@/utils/translation';
 
 interface ProductCardProps {
@@ -11,45 +10,47 @@ interface ProductCardProps {
   locale: Locale;
 }
 
-export default function ProductCard(props: ProductCardProps) {
-  const {
-    product: { _id, images, title, slug },
-    locale,
-  } = props;
+export default function ProductCard({ product, locale }: ProductCardProps) {
+  const { images, title, slug, category } = product;
   const t = useTranslation();
-  const image = first(images);
+  const image = images?.[0];
+  const productTitle = title[locale] || title.en;
+  const categoryTitle = category?.title?.[locale] || category?.title?.en;
 
   return (
-    <div
-      key={_id}
-      className="group flex flex-col h-full bg-card rounded-sm overflow-hidden shadow-card hover:shadow-lg transition-all duration-300 backdrop-filter backdrop-blur-sm"
-    >
-      <Link href={`/gallery/${slug.current}`} className="block overflow-hidden">
+    <article className="group min-w-0">
+      <Link
+        href={`/gallery/${slug.current}`}
+        className="relative isolate block aspect-[4/5] overflow-hidden bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-text"
+        aria-label={`${productTitle} — ${t.viewDetails}`}
+      >
         {image && (
-          <div className="relative w-full aspect-square overflow-hidden">
+          <div className="absolute inset-0">
             <Image
-              src={urlFor(image).width(600).height(600).url()}
-              alt={title[locale]}
+              src={urlFor(image).width(900).height(1125).url()}
+              alt={image.alt || productTitle}
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025] group-focus-within:scale-[1.025] motion-reduce:transform-none"
             />
           </div>
         )}
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 border-t border-black/10 bg-[#F8F6F2]/80 p-3 text-[#262522] opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 sm:p-4 motion-reduce:transform-none">
+          <div className="flex items-end justify-between gap-3">
+            <div className="min-w-0">
+              {categoryTitle && (
+                <p className="mb-2 text-[9px] uppercase tracking-[0.16em] text-[#69625B] sm:text-[10px]">{categoryTitle}</p>
+              )}
+              <h2 className="break-words font-heading text-xl leading-[1.1] sm:text-2xl">{productTitle}</h2>
+              <span className="mt-2 block text-[10px] tracking-[0.08em] text-[#69625B]">{t.viewDetails}</span>
+            </div>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="mb-0.5 h-5 w-5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none">
+              <path d="M5 19 19 5M5 5h14v14" stroke="currentColor" strokeWidth="1" />
+            </svg>
+          </div>
+        </div>
       </Link>
-      <div className="p-4 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="font-medium text-base text-text line-clamp-2">{title[locale]}</h3>
-        </div>
-        <div className="mt-auto pt-3">
-          <Link
-            href={`/gallery/${slug.current}`}
-            className="inline-block w-full text-center py-2.5 px-4 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors duration-200 font-medium"
-          >
-            {t.viewDetails}
-          </Link>
-        </div>
-      </div>
-    </div>
+    </article>
   );
 }
