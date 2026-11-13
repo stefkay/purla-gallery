@@ -8,12 +8,16 @@ import ProductSEO from '@/components/ProductSEO';
 import { useRouter } from 'next/router';
 import { isLocale, useTranslation } from '@/utils/translation';
 import { Product } from '@/interfaces/product';
-import { productQuery, pathsQuery } from '@/sanity/lib/queries';
+import { productQuery, pathsQuery, homeProductsQuery } from '@/sanity/lib/queries';
+import ProductCard from '@/components/ProductCard';
 import ImageLightbox from '@/components/ImageLightbox';
 
 type Props = {
   product: Product;
   locale: Locale;
+  previous: Product | null;
+  next: Product | null;
+  related: Product[];
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -31,17 +35,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { slug } = params as { slug: string };
   const product: Product = await sanityClient.fetch(productQuery, { slug });
+  if (!product) return {notFound: true};
+  const pieces: Product[] = await sanityClient.fetch(homeProductsQuery);
+  const index = pieces.findIndex(piece => piece._id === product._id);
+  const categorySlug = product.category?.slug?.current;
+  const related = categorySlug ? pieces.filter(piece => piece._id !== product._id && piece.category?.slug?.current === categorySlug).slice(0, 3) : [];
 
   return {
     props: {
       product,
       locale,
+      previous: index > 0 ? pieces[index - 1] : null,
+      next: index >= 0 && index < pieces.length - 1 ? pieces[index + 1] : null,
+      related,
     },
     revalidate: 60,
   };
 };
 
-export default function ProductPage({ product }: Props) {
+export default function ProductPage({ product, previous, next, related }: Props) {
   const router = useRouter();
   const rawLocale = router.locale ?? 'en';
   const locale: Locale = isLocale(rawLocale) ? rawLocale : 'en';
@@ -59,7 +71,7 @@ export default function ProductPage({ product }: Props) {
     <>
       <ProductSEO product={product} locale={locale} />
 
-      <article className="mx-auto max-w-[1440px] px-5 pb-24 pt-8 sm:px-8 lg:px-12 lg:pt-16">
+      <article className="detail-page">
         <div className="mb-8 flex items-center justify-between border-b editorial-rule pb-5">
           <Link href="/gallery" className="text-xs tracking-[0.14em] text-text-secondary transition-colors hover:text-text">
             ← {t.gallery}
@@ -113,6 +125,11 @@ export default function ProductPage({ product }: Props) {
             <ImageLightbox images={product.images} title={title} />
           </section>
         )}
+        {(previous || next) && <nav aria-label={t.pieceNavigation} className="detail-navigation">
+          <div>{previous && <Link href={`/gallery/${previous.slug.current}`} className="detail-navigation-link"><span className="eyebrow">← {t.previousPiece}</span><span>{previous.title[locale] || previous.title.en}</span></Link>}</div>
+          <div className="text-right">{next && <Link href={`/gallery/${next.slug.current}`} className="detail-navigation-link"><span className="eyebrow">{t.nextPiece} →</span><span>{next.title[locale] || next.title.en}</span></Link>}</div>
+        </nav>}
+        {related.length > 0 && <section className="detail-related" aria-labelledby="related-title"><h2 id="related-title" className="mb-8 font-heading text-3xl">{t.relatedPieces}</h2><div className="grid grid-cols-2 gap-2 sm:grid-cols-3">{related.map(piece => <ProductCard key={piece._id} product={piece} locale={locale} />)}</div></section>}
       </article>
     </>
   );

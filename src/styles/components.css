@@ -1,4 +1,8 @@
 /* Named component recipes. Keep design values in theme.css. */
+  .detail-page { @apply px-[var(--page-gutter)] pb-24 pt-8 lg:pt-16; }
+  .detail-navigation { @apply mt-16 grid grid-cols-2 gap-8 border-y border-border py-8; }
+  .detail-navigation-link { @apply inline-flex max-w-full flex-col gap-3 break-words font-heading text-xl focus-visible:outline focus-visible:outline-offset-4; }
+  .detail-related { @apply mt-16 border-t border-border pt-8; }
   .page-gutters { @apply px-[var(--page-gutter)]; }
   .gallery-page { @apply px-[var(--page-gutter)] py-10 lg:py-16; }
   .gallery-heading { @apply mb-8 flex items-end justify-between border-b border-border pb-5 sm:mb-10; }

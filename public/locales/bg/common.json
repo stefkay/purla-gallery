@@ -1,5 +1,9 @@
 {
   "home": "Начало",
+  "pieceNavigation": "Навигация между творбите",
+  "previousPiece": "Предишна творба",
+  "nextPiece": "Следваща творба",
+  "relatedPieces": "В същата категория",
   "allPieces": "Всички бижута",
   "gridView": "Мрежа",
   "listView": "Списък",

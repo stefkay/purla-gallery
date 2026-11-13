@@ -1,5 +1,9 @@
 {
   "home": "Home",
+  "pieceNavigation": "Piece navigation",
+  "previousPiece": "Previous piece",
+  "nextPiece": "Next piece",
+  "relatedPieces": "In the same category",
   "allPieces": "All pieces",
   "gridView": "Grid",
   "listView": "Index",
