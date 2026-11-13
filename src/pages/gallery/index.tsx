@@ -32,11 +32,11 @@ const Gallery = ({ products }: { products: Product[] }) => {
   const filteredProducts = products.filter((product) => !selectedCategory || categoryKey(product) === selectedCategory);
 
   return (
-    <div className="px-[var(--page-gutter)] py-10 lg:py-16">
-      <div className="mb-8 flex items-end justify-between border-b editorial-rule pb-5 sm:mb-10">
+    <div className="gallery-page">
+      <div className="gallery-heading">
         <h1 className="font-heading text-5xl leading-none sm:text-6xl">{t.gallery}</h1>
       </div>
-      <div className="mb-6 flex flex-col justify-between gap-5 sm:flex-row sm:items-start">
+      <div className="gallery-toolbar">
         <div role="group" aria-label={t.galleryFilters} className="flex flex-wrap gap-x-5 gap-y-3">
           {[[null, t.allPieces], ...categories.map(([key, category]) => [key, category.title[locale] || category.title.en])].map(([key, label]) => (
             <button key={key || 'all'} type="button" aria-pressed={selectedCategory === key} onClick={() => setSelectedCategory(key)} className={`border-b py-1 text-xs tracking-wide transition-colors focus-visible:outline focus-visible:outline-offset-4 ${selectedCategory === key ? 'border-text text-text' : 'border-transparent text-text-secondary hover:border-border hover:text-text'}`}>
@@ -53,12 +53,12 @@ const Gallery = ({ products }: { products: Product[] }) => {
         </div>
       </div>
       <p role="status" className="mb-4 text-xs text-text-secondary">{filteredProducts.length} {t.pieceCount}</p>
-      <div key={`${view}-${selectedCategory}`} className={view === 'grid' ? 'gallery-results grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4' : 'gallery-results border-t editorial-rule'}>
+      <div key={`${view}-${selectedCategory}`} className={view === 'grid' ? 'gallery-results gallery-grid' : 'gallery-results border-t editorial-rule'}>
         {filteredProducts.map((product, index) => view === 'grid' ? (
           <ProductCard key={product._id} product={product} locale={locale} wide={filteredProducts.length >= 6 && index % 6 === 0} />
         ) : (
-          <Link key={product._id} href={`/gallery/${product.slug.current}`} className="group flex items-center gap-4 border-b editorial-rule py-4 focus-visible:outline focus-visible:outline-offset-4 sm:gap-8 sm:py-6">
-            <div className="relative h-20 w-16 shrink-0 overflow-hidden bg-secondary sm:h-28 sm:w-24">
+          <Link key={product._id} href={`/gallery/${product.slug.current}`} className="group gallery-index-row">
+            <div className="gallery-index-image">
               {product.images?.[0] && <Image src={urlFor(product.images[0]).width(240).height(300).url()} alt={product.images[0].alt || product.title[locale] || product.title.en} fill sizes="96px" className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none" />}
             </div>
             <div className="min-w-0 flex-1">
