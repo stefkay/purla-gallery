@@ -2,11 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Touch devices cannot reveal essential labels with hover. */
-@media (hover: none) {
+/* Keep small-screen/touch captions in flow, never over the photography. */
+@media (hover: none), (max-width: 639px) {
   .gallery-caption {
+    position: static;
     opacity: 1;
     transform: none;
+    padding: 10px 6px 14px;
+    border: 0;
+    background: rgb(var(--color-bg));
+  }
+
+  .gallery-caption h2 {
+    font-size: 1rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .gallery-caption-category {
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+  .gallery-caption-details {
+    display: none;
+  }
+
+  .gallery-caption svg {
+    width: 14px;
+    height: 14px;
   }
 }
 
