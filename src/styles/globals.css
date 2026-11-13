@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Touch devices cannot reveal essential labels with hover. */
+@media (hover: none) {
+  .gallery-caption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes gallery-entrance {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }

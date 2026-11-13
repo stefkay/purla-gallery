@@ -44,6 +44,12 @@ export const productQuery = `
     }
   `;
 
+// Stable selection until explicit editorial curation is added to the CMS.
+export const homeProductsQuery = productsQuery.replace(
+  '*[_type == "product"]',
+  '*[_type == "product" && defined(slug.current)] | order(_createdAt desc, _id asc)',
+);
+
 export const pathsQuery = `
     *[_type == "product" && defined(slug.current)][]{
       slug
