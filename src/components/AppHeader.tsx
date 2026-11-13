@@ -4,6 +4,8 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import Logo from '@/components/Logo';
 import { useEffect, useState } from 'react';
+import {useRouter} from 'next/router';
+import AnnouncementBar from './AnnouncementBar';
 
 type AppHeaderProps = {
   className?: string;
@@ -11,6 +13,7 @@ type AppHeaderProps = {
 
 export default function AppHeader({ className = '' }: AppHeaderProps) {
   const t = useTranslation();
+  const {pathname} = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -33,18 +36,20 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full border-b editorial-rule bg-bg/95 backdrop-blur-sm ${className}`}
+      className={`sticky top-0 z-50 w-full border-b editorial-rule bg-bg ${className}`}
     >
-      <div className="mx-auto flex h-[var(--header-height)] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-bg focus:p-3">{pathname.startsWith('/bg') ? 'Към съдържанието' : 'Skip to content'}</a>
+      <AnnouncementBar />
+      <div className="flex h-[var(--header-height)] items-center justify-between px-[var(--page-gutter)]">
         <Link href="/" onClick={closeMenu} className="relative z-30 -ml-2 transition-opacity hover:opacity-60">
           <Logo />
         </Link>
 
         <nav aria-label="Primary navigation" className="hidden items-center gap-10 md:flex">
-          <Link href="/" className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary">
+          <Link href="/" aria-current={pathname === '/' ? 'page' : undefined} className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary aria-[current=page]:underline underline-offset-8">
             {t.home}
           </Link>
-          <Link href="/gallery" className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary">
+          <Link href="/gallery" aria-current={pathname.startsWith('/gallery') ? 'page' : undefined} className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary aria-[current=page]:underline underline-offset-8">
             {t.gallery}
           </Link>
         </nav>

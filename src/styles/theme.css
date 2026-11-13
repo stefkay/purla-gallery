@@ -13,12 +13,13 @@
   --color-error: 139 73 68;
   --color-info: 105 98 91;
   --color-neutral: 105 98 91;
-  --color-bg: 248 246 242;
-  --color-bg-secondary: 233 227 217;
-  --color-bg-tertiary: 244 240 234;
-  --color-text: 38 37 34;
-  --color-text-secondary: 105 98 91;
-  --color-border: 221 216 208;
+  --color-bg: 255 255 255;
+  --color-bg-secondary: 245 245 243;
+  --color-bg-tertiary: 240 240 240;
+  --color-text: 17 17 17;
+  --color-text-secondary: 102 102 102;
+  --color-border: 229 229 229;
+  --page-gutter: clamp(1rem, 2vw, 2rem);
   --font-body: 'DM Sans', sans-serif;
   --font-heading: 'Cormorant Garamond', serif;
   --text-xs: 0.6875rem;
@@ -42,16 +43,16 @@
   --shadow-md: none;
   --shadow-lg: 0 18px 45px rgba(38, 37, 34, 0.09);
   --header-height: 5.5rem;
-  --card-bg: 248 246 242;
+  --card-bg: 255 255 255;
   --card-shadow: none;
 }
 
 .dark {
-  --color-bg: 38 37 34;
-  --color-bg-secondary: 54 51 46;
-  --color-bg-tertiary: 67 63 57;
-  --color-text: 248 246 242;
-  --color-text-secondary: 196 188 178;
-  --color-border: 89 84 76;
-  --card-bg: 54 51 46;
+  --color-bg: 17 17 17;
+  --color-bg-secondary: 30 30 30;
+  --color-bg-tertiary: 40 40 40;
+  --color-text: 255 255 255;
+  --color-text-secondary: 180 180 180;
+  --color-border: 65 65 65;
+  --card-bg: 30 30 30;
 }
