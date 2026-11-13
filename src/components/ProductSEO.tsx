@@ -16,22 +16,13 @@ export default function ProductSEO({ product, locale = 'en' }: ProductSEOProps) 
     '@type': 'Product',
     sku: product.productNumber,
     name: product.metaTitle?.[locale] || product.title[locale],
-    image: [urlFor(product.thumbnail).url(), ...product.images.map((img) => urlFor(img).url())],
+    image: [...(product.thumbnail ? [urlFor(product.thumbnail).url()] : []), ...product.images.map((img) => urlFor(img).url())],
     description: product.metaDescription?.[locale] || product.description[locale],
     brand: {
       '@type': 'Brand',
       name: 'Purla',
     },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: locale === 'en' ? 'EUR' : 'BGN',
-      price: product.price[locale],
-      availability:
-        product.availability === 'in_stock'
-          ? 'https://schema.org/InStock'
-          : 'https://schema.org/OutOfStock',
-      url: `${siteUrl}/gallery/${product.slug.current}`,
-    },
+    ...(siteUrl ? { url: `${siteUrl}/gallery/${product.slug.current}` } : {}),
   };
 
   return (
