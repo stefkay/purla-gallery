@@ -3,7 +3,7 @@ import { useTranslation } from '@/utils/translation';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import Logo from '@/components/Logo';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {useRouter} from 'next/router';
 import AnnouncementBar from './AnnouncementBar';
 
@@ -13,8 +13,26 @@ type AppHeaderProps = {
 
 export default function AppHeader({ className = '' }: AppHeaderProps) {
   const t = useTranslation();
-  const {pathname} = useRouter();
+  const {pathname, locale} = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const menuPanel = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const trigger = menuButton.current;
+    menuPanel.current?.querySelector<HTMLElement>('a')?.focus();
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return;
+      const controls = [menuButton.current, ...Array.from(menuPanel.current?.querySelectorAll<HTMLElement>('a, button') || [])].filter((item): item is HTMLElement => item !== null);
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {event.preventDefault(); last?.focus();}
+      if (!event.shiftKey && document.activeElement === last) {event.preventDefault(); first?.focus();}
+    };
+    document.addEventListener('keydown', trapFocus);
+    return () => {document.removeEventListener('keydown', trapFocus); trigger?.focus();};
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -38,7 +56,7 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
     <header
       className={`sticky top-0 z-50 w-full border-b editorial-rule bg-bg ${className}`}
     >
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-bg focus:p-3">{pathname.startsWith('/bg') ? 'Към съдържанието' : 'Skip to content'}</a>
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-bg focus:p-3">{locale === 'bg' ? 'Към съдържанието' : 'Skip to content'}</a>
       <AnnouncementBar />
       <div className="flex h-[var(--header-height)] items-center justify-between px-[var(--page-gutter)]">
         <Link href="/" onClick={closeMenu} className="relative z-30 -ml-2 transition-opacity hover:opacity-60">
@@ -60,6 +78,7 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
         </div>
 
         <button
+          ref={menuButton}
           id="menu-button"
           type="button"
           aria-controls="mobile-menu"
@@ -74,7 +93,7 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
         </button>
 
         {isMenuOpen && (
-          <div id="mobile-menu" className="fixed inset-0 z-20 flex flex-col bg-bg px-6 pb-10 pt-32 md:hidden">
+          <div ref={menuPanel} id="mobile-menu" className="fixed inset-0 z-20 flex flex-col bg-bg px-6 pb-10 pt-32 md:hidden">
             <nav aria-label="Mobile navigation" className="flex flex-col gap-6 border-y editorial-rule py-8">
               <Link href="/" onClick={closeMenu} className="font-heading text-5xl leading-none">
                 {t.home}

@@ -3,15 +3,14 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" className="theme-light">
+      <Html lang={this.props.locale || 'en'} className="theme-light">
         <Head>
           {/* Meta tags */}
           <meta charSet="UTF-8" />
-          <meta name="description" content="Awesome handmade products by Purla" />
           <meta name="keywords" content="handmade, earrings, Purla, accessories, leather" />
           <meta name="author" content="Purla Index" />
           {/* Favicon */}
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/purla_logo.svg" />
 
           {/* Google Fonts or custom styles */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,9 +23,8 @@ class MyDocument extends Document {
           <meta property="og:title" content="Purla - Handmade Accessories" />
           <meta
             property="og:description"
-            content="Discover unique handmade earrings and home decor."
+            content="Explore handcrafted leather jewelry by Purla."
           />
-          <meta property="og:image" content="/images/og-image.jpg" />
           {/*<meta property="og:url" content="https://purla-gallery.com"/>*/}
           <meta name="twitter:card" content="summary_large_image" />
         </Head>

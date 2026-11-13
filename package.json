@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint src",
     "format": "prettier --write .",
     "postinstall": "yarn install-studio",
     "install-studio": "cd studio && yarn install",
