@@ -14,12 +14,14 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const touchStart = useRef<{x: number; y: number} | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const isOpen = activeIndex !== null;
 
   const close = useCallback(() => setActiveIndex(null), []);
   const showPrevious = useCallback(() => {
-    setActiveIndex((index) => (index === null ? null : (index - 1 + images.length) % images.length));
+    setActiveIndex((index) =>
+      index === null ? null : (index - 1 + images.length) % images.length
+    );
   }, [images.length]);
   const showNext = useCallback(() => {
     setActiveIndex((index) => (index === null ? null : (index + 1) % images.length));
@@ -39,8 +41,14 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
         if (!buttons?.length) return;
         const first = buttons[0];
         const last = buttons[buttons.length - 1];
-        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        }
+        if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
 
@@ -56,13 +64,16 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-2 sm:gap-3">
+      <div className="lightbox-grid">
         {images.map((image, index) => (
           <button
             key={image._key || `${image.asset._ref}-${index}`}
             type="button"
-            className="group relative aspect-[4/5] overflow-hidden bg-secondary text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-text"
-            onClick={(event) => { triggerRef.current = event.currentTarget; setActiveIndex(index); }}
+            className="group lightbox-tile"
+            onClick={(event) => {
+              triggerRef.current = event.currentTarget;
+              setActiveIndex(index);
+            }}
             aria-label={`Open image ${index + 1} of ${images.length}`}
           >
             <Image
@@ -70,7 +81,7 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
               alt={image.alt || title}
               fill
               sizes="(max-width: 768px) 50vw, 33vw"
-              className="scale-[1.06] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.1]"
+              className="lightbox-thumbnail"
             />
           </button>
         ))}
@@ -79,12 +90,13 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
       {activeIndex !== null && (
         <div
           ref={dialogRef}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-text/95 p-4 sm:p-8"
+          className="lightbox-dialog"
           role="dialog"
           aria-modal="true"
           aria-label={`${title} image viewer`}
           onTouchStart={(event) => {
-            if (event.touches.length === 1) touchStart.current = {x: event.touches[0].clientX, y: event.touches[0].clientY};
+            if (event.touches.length === 1)
+              touchStart.current = { x: event.touches[0].clientX, y: event.touches[0].clientY };
             else touchStart.current = null;
           }}
           onTouchEnd={(event) => {
@@ -94,7 +106,8 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
             const dx = event.changedTouches[0].clientX - start.x;
             const dy = event.changedTouches[0].clientY - start.y;
             if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-              if (dx < 0) showNext(); else showPrevious();
+              if (dx < 0) showNext();
+              else showPrevious();
             }
           }}
           onClick={(event) => {
@@ -105,7 +118,7 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
             ref={closeButtonRef}
             type="button"
             onClick={close}
-            className="absolute right-5 top-5 z-10 p-2 text-bg transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-1 focus-visible:ring-bg"
+            className="lightbox-close"
             aria-label="Close image viewer"
           >
             <span className="text-2xl leading-none">×</span>
@@ -114,7 +127,7 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
           <button
             type="button"
             onClick={showPrevious}
-            className="absolute left-3 top-1/2 -translate-y-1/2 p-3 text-bg transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-1 focus-visible:ring-bg sm:left-8"
+            className="lightbox-previous"
             aria-label="Previous image"
           >
             <span className="text-3xl leading-none">←</span>
@@ -126,19 +139,19 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
             width={1800}
             height={1800}
             sizes="90vw"
-            className="max-h-[88vh] w-auto max-w-[82vw] object-contain"
+            className="lightbox-photo"
           />
 
           <button
             type="button"
             onClick={showNext}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-3 text-bg transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-1 focus-visible:ring-bg sm:right-8"
+            className="lightbox-next"
             aria-label="Next image"
           >
             <span className="text-3xl leading-none">→</span>
           </button>
 
-          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs tracking-[0.16em] text-bg/70">
+          <p className="lightbox-counter">
             {activeIndex + 1} / {images.length}
           </p>
         </div>
@@ -146,4 +159,3 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
     </>
   );
 }
-

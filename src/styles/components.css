@@ -1,34 +1,283 @@
 /* Named component recipes. Keep design values in theme.css. */
-  .detail-page { @apply px-[var(--page-gutter)] pb-24 pt-8 lg:pt-16; }
-  .detail-navigation { @apply mt-16 grid grid-cols-2 gap-8 border-y border-border py-8; }
-  .detail-navigation-link { @apply inline-flex max-w-full flex-col gap-3 break-words font-heading text-xl focus-visible:outline focus-visible:outline-offset-4; }
-  .detail-related { @apply mt-16 border-t border-border pt-8; }
-  .page-gutters { @apply px-[var(--page-gutter)]; }
-  .gallery-page { @apply px-[var(--page-gutter)] py-10 lg:py-16; }
-  .gallery-heading { @apply mb-8 flex items-end justify-between border-b border-border pb-5 sm:mb-10; }
-  .gallery-toolbar { @apply mb-6 flex flex-col justify-between gap-5 sm:flex-row sm:items-start; }
-  .gallery-grid { @apply grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4; }
-  .gallery-control { @apply border-b py-1 text-xs tracking-wide transition-colors focus-visible:outline focus-visible:outline-offset-4; }
-  .gallery-control--active { @apply border-text text-text; }
-  .gallery-control--inactive { @apply border-transparent text-text-secondary hover:border-border hover:text-text; }
-  .gallery-index-row { @apply flex items-center gap-4 border-b border-border py-4 focus-visible:outline focus-visible:outline-offset-4 sm:gap-8 sm:py-6; }
-  .gallery-index-image { @apply relative h-20 w-16 shrink-0 overflow-hidden bg-secondary sm:h-28 sm:w-24; }
-  .product-card { @apply min-w-0; }
-  .product-card--wide { @apply lg:col-span-2; }
-  .product-card-link { @apply relative isolate block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-text; }
-  .product-card-image { @apply relative aspect-[4/5] overflow-hidden bg-bg-secondary; }
-  .product-card-image--wide { @apply lg:aspect-[8/5]; }
-  .editorial-image { @apply object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025] group-focus-within:scale-[1.025] motion-reduce:transform-none; }
-  .gallery-caption { @apply pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 border-t border-border bg-bg/80 p-3 text-text opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 sm:p-4 motion-reduce:transform-none; }
-  .gallery-caption-category { @apply mb-2 text-[9px] uppercase tracking-[0.16em] text-text-secondary sm:text-[10px]; }
-  .gallery-caption-title { @apply break-words font-heading text-xl leading-[1.1] sm:text-2xl; }
-  .gallery-caption-details { @apply mt-2 block text-[10px] tracking-[0.08em] text-text-secondary; }
-  .gallery-caption-arrow { @apply mb-0.5 h-5 w-5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none; }
-  .home-page { @apply px-[var(--page-gutter)] pb-20; }
-  .home-hero { @apply grid items-center gap-8 py-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16 lg:py-10; }
-  .home-title { @apply max-w-lg font-heading text-5xl leading-[0.95] sm:text-6xl lg:text-7xl; }
-  .editorial-cta { @apply mt-10 inline-flex min-h-11 items-center gap-8 border-b border-text pb-2 text-sm tracking-wide focus-visible:outline focus-visible:outline-offset-4; }
-  .home-hero-image { @apply relative block aspect-[4/5] overflow-hidden bg-bg-secondary focus-visible:outline focus-visible:outline-offset-4 lg:aspect-[6/5]; }
-  .home-image-caption { @apply absolute bottom-4 left-4 bg-bg/85 px-3 py-2 text-sm text-text; }
-  .home-featured { @apply mt-12 border-t border-border pt-8 sm:mt-20; }
-  .home-featured-grid { @apply grid items-start gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-10; }
+.site-header {
+  @apply sticky top-0 z-50 w-full border-b border-border bg-bg;
+}
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-bg focus:p-3;
+}
+.header-inner {
+  @apply flex h-[var(--header-height)] items-center justify-between px-[var(--page-gutter)];
+}
+.header-logo {
+  @apply relative z-30 -ml-2 transition-opacity hover:opacity-60;
+}
+.header-nav {
+  @apply hidden items-center gap-10 md:flex;
+}
+.header-nav-link {
+  @apply text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary aria-[current=page]:underline underline-offset-8;
+}
+.header-tools {
+  @apply hidden items-center gap-5 md:flex;
+}
+.menu-toggle {
+  @apply relative z-30 flex h-10 w-10 items-center justify-center md:hidden;
+}
+.menu-line {
+  @apply absolute h-px w-6 bg-text transition-transform;
+}
+.mobile-menu {
+  @apply fixed inset-0 z-20 flex flex-col bg-bg px-6 pb-10 pt-32 md:hidden;
+}
+.mobile-menu-nav {
+  @apply flex flex-col gap-6 border-y border-border py-8;
+}
+.mobile-menu-link {
+  @apply font-heading text-5xl leading-none;
+}
+.mobile-menu-tools {
+  @apply mt-auto flex items-center justify-between border-t border-border pt-6;
+}
+.site-footer {
+  @apply mx-auto flex w-full max-w-[1440px] flex-col gap-3 border-t border-border px-5 py-8 text-text-secondary sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12;
+}
+.theme-toggle {
+  @apply p-2 text-text-secondary transition-colors duration-200 hover:text-text focus:outline-none focus-visible:ring-1 focus-visible:ring-text;
+}
+.language-link {
+  @apply text-xs tracking-[0.12em] transition-colors duration-200;
+}
+.announcement-bar {
+  @apply bg-black px-[var(--page-gutter)] py-2 text-center text-xs leading-relaxed text-white;
+}
+.announcement-link {
+  @apply ml-3 inline-block underline underline-offset-4 focus-visible:outline focus-visible:outline-offset-2;
+}
+.home-photo {
+  @apply object-cover transition-transform duration-700 group-hover:scale-[1.025] motion-reduce:transform-none;
+}
+.section-heading {
+  @apply mb-10 flex items-end justify-between gap-6;
+}
+.section-title {
+  @apply font-heading text-4xl sm:text-5xl;
+}
+.section-link {
+  @apply text-xs tracking-wide underline underline-offset-4;
+}
+.home-feature-link {
+  @apply block focus-visible:outline focus-visible:outline-offset-4;
+}
+.home-feature-primary {
+  @apply lg:col-span-5;
+}
+.home-feature-secondary {
+  @apply sm:mt-20 lg:col-span-3 lg:mt-36;
+}
+.home-feature-tertiary {
+  @apply lg:col-span-4 lg:mt-12;
+}
+.home-feature-image {
+  @apply relative overflow-hidden bg-bg-secondary;
+}
+.piece-summary {
+  @apply mt-4 flex items-start justify-between gap-4;
+}
+.piece-materials {
+  @apply mt-1 text-xs text-text-secondary;
+}
+.gallery-title {
+  @apply font-heading text-5xl leading-none sm:text-6xl;
+}
+.gallery-filters {
+  @apply flex flex-wrap gap-x-5 gap-y-3;
+}
+.gallery-view-toggle {
+  @apply flex shrink-0 gap-4;
+}
+.gallery-filter-button {
+  @apply border-b py-1 text-xs tracking-wide transition-colors focus-visible:outline focus-visible:outline-offset-4;
+}
+.gallery-view-button {
+  @apply border-b py-1 text-xs tracking-wide focus-visible:outline focus-visible:outline-offset-4;
+}
+.gallery-filter-active {
+  @apply border-text text-text;
+}
+.gallery-filter-inactive {
+  @apply border-transparent text-text-secondary hover:border-border hover:text-text;
+}
+.gallery-view-inactive {
+  @apply border-transparent text-text-secondary;
+}
+.gallery-count {
+  @apply mb-4 text-xs text-text-secondary;
+}
+.gallery-index-photo {
+  @apply object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none;
+}
+.gallery-index-title {
+  @apply break-words font-heading text-xl leading-tight sm:text-2xl;
+}
+.lightbox-grid {
+  @apply grid grid-cols-2 gap-2 sm:gap-3;
+}
+.lightbox-tile {
+  @apply relative aspect-[4/5] overflow-hidden bg-secondary text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-text;
+}
+.lightbox-thumbnail {
+  @apply scale-[1.06] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.1];
+}
+.lightbox-dialog {
+  @apply fixed inset-0 z-[60] flex items-center justify-center bg-text/95 p-4 sm:p-8;
+}
+.lightbox-close {
+  @apply absolute right-5 top-5 z-10 p-2 text-bg transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-1 focus-visible:ring-bg;
+}
+.lightbox-previous {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 p-3 text-bg transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-1 focus-visible:ring-bg sm:left-8;
+}
+.lightbox-next {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 p-3 text-bg transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-1 focus-visible:ring-bg sm:right-8;
+}
+.lightbox-photo {
+  @apply max-h-[88vh] w-auto max-w-[82vw] object-contain;
+}
+.lightbox-counter {
+  @apply absolute bottom-5 left-1/2 -translate-x-1/2 text-xs tracking-[0.16em] text-bg/70;
+}
+.detail-breadcrumb {
+  @apply mb-8 flex items-center justify-between border-b border-border pb-5;
+}
+.detail-back-link {
+  @apply text-xs tracking-[0.14em] text-text-secondary transition-colors hover:text-text;
+}
+.detail-hero {
+  @apply grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.7fr)] lg:gap-20;
+}
+.detail-hero-frame {
+  @apply relative aspect-[3/4] overflow-hidden bg-secondary;
+}
+.detail-information {
+  @apply flex flex-col justify-between lg:py-3;
+}
+.detail-title {
+  @apply max-w-xl font-heading text-6xl leading-[0.88] sm:text-7xl lg:text-8xl;
+}
+.detail-description {
+  @apply mt-8 max-w-md text-base leading-7 text-text-secondary;
+}
+.detail-metadata {
+  @apply mt-12 border-y border-border text-sm;
+}
+.detail-metadata-row {
+  @apply border-b border-border py-4 last:border-b-0;
+}
+.detail-story {
+  @apply mt-20 border-t border-border pt-8 sm:mt-32;
+}
+.detail-story-heading {
+  @apply mb-8 flex items-end justify-between gap-6;
+}
+.detail-story-hint {
+  @apply hidden max-w-xs text-right text-sm text-text-secondary sm:block;
+}
+.detail-page {
+  @apply px-[var(--page-gutter)] pb-24 pt-8 lg:pt-16;
+}
+.detail-navigation {
+  @apply mt-16 grid grid-cols-2 gap-8 border-y border-border py-8;
+}
+.detail-navigation-link {
+  @apply inline-flex max-w-full flex-col gap-3 break-words font-heading text-xl focus-visible:outline focus-visible:outline-offset-4;
+}
+.detail-related {
+  @apply mt-16 border-t border-border pt-8;
+}
+.page-gutters {
+  @apply px-[var(--page-gutter)];
+}
+.gallery-page {
+  @apply px-[var(--page-gutter)] py-10 lg:py-16;
+}
+.gallery-heading {
+  @apply mb-8 flex items-end justify-between border-b border-border pb-5 sm:mb-10;
+}
+.gallery-toolbar {
+  @apply mb-6 flex flex-col justify-between gap-5 sm:flex-row sm:items-start;
+}
+.gallery-grid {
+  @apply grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4;
+}
+.gallery-control {
+  @apply border-b py-1 text-xs tracking-wide transition-colors focus-visible:outline focus-visible:outline-offset-4;
+}
+.gallery-control--active {
+  @apply border-text text-text;
+}
+.gallery-control--inactive {
+  @apply border-transparent text-text-secondary hover:border-border hover:text-text;
+}
+.gallery-index-row {
+  @apply flex items-center gap-4 border-b border-border py-4 focus-visible:outline focus-visible:outline-offset-4 sm:gap-8 sm:py-6;
+}
+.gallery-index-image {
+  @apply relative h-20 w-16 shrink-0 overflow-hidden bg-secondary sm:h-28 sm:w-24;
+}
+.product-card {
+  @apply min-w-0;
+}
+.product-card--wide {
+  @apply lg:col-span-2;
+}
+.product-card-link {
+  @apply relative isolate block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-text;
+}
+.product-card-image {
+  @apply relative aspect-[4/5] overflow-hidden bg-bg-secondary;
+}
+.product-card-image--wide {
+  @apply lg:aspect-[8/5];
+}
+.editorial-image {
+  @apply object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025] group-focus-within:scale-[1.025] motion-reduce:transform-none;
+}
+.gallery-caption {
+  @apply pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 border-t border-border bg-bg/80 p-3 text-text opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 sm:p-4 motion-reduce:transform-none;
+}
+.gallery-caption-category {
+  @apply mb-2 text-[9px] uppercase tracking-[0.16em] text-text-secondary sm:text-[10px];
+}
+.gallery-caption-title {
+  @apply break-words font-heading text-xl leading-[1.1] sm:text-2xl;
+}
+.gallery-caption-details {
+  @apply mt-2 block text-[10px] tracking-[0.08em] text-text-secondary;
+}
+.gallery-caption-arrow {
+  @apply mb-0.5 h-5 w-5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none;
+}
+.home-page {
+  @apply px-[var(--page-gutter)] pb-20;
+}
+.home-hero {
+  @apply grid items-center gap-8 py-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16 lg:py-10;
+}
+.home-title {
+  @apply max-w-lg font-heading text-5xl leading-[0.95] sm:text-6xl lg:text-7xl;
+}
+.editorial-cta {
+  @apply mt-10 inline-flex min-h-11 items-center gap-8 border-b border-text pb-2 text-sm tracking-wide focus-visible:outline focus-visible:outline-offset-4;
+}
+.home-hero-image {
+  @apply relative block aspect-[4/5] overflow-hidden bg-bg-secondary focus-visible:outline focus-visible:outline-offset-4 lg:aspect-[6/5];
+}
+.home-image-caption {
+  @apply absolute bottom-4 left-4 bg-bg/85 px-3 py-2 text-sm text-text;
+}
+.home-featured {
+  @apply mt-12 border-t border-border pt-8 sm:mt-20;
+}
+.home-featured-grid {
+  @apply grid items-start gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-10;
+}

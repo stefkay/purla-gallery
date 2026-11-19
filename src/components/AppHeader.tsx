@@ -4,7 +4,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import Logo from '@/components/Logo';
 import { useEffect, useRef, useState } from 'react';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import AnnouncementBar from './AnnouncementBar';
 
 type AppHeaderProps = {
@@ -13,7 +13,7 @@ type AppHeaderProps = {
 
 export default function AppHeader({ className = '' }: AppHeaderProps) {
   const t = useTranslation();
-  const {pathname, locale} = useRouter();
+  const { pathname, locale } = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const menuPanel = useRef<HTMLDivElement>(null);
@@ -24,14 +24,26 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
     menuPanel.current?.querySelector<HTMLElement>('a')?.focus();
     const trapFocus = (event: KeyboardEvent) => {
       if (event.key !== 'Tab') return;
-      const controls = [menuButton.current, ...Array.from(menuPanel.current?.querySelectorAll<HTMLElement>('a, button') || [])].filter((item): item is HTMLElement => item !== null);
+      const controls = [
+        menuButton.current,
+        ...Array.from(menuPanel.current?.querySelectorAll<HTMLElement>('a, button') || []),
+      ].filter((item): item is HTMLElement => item !== null);
       const first = controls[0];
       const last = controls[controls.length - 1];
-      if (event.shiftKey && document.activeElement === first) {event.preventDefault(); last?.focus();}
-      if (!event.shiftKey && document.activeElement === last) {event.preventDefault(); first?.focus();}
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      }
+      if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
     };
     document.addEventListener('keydown', trapFocus);
-    return () => {document.removeEventListener('keydown', trapFocus); trigger?.focus();};
+    return () => {
+      document.removeEventListener('keydown', trapFocus);
+      trigger?.focus();
+    };
   }, [isMenuOpen]);
 
   useEffect(() => {
@@ -53,26 +65,34 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full border-b editorial-rule bg-bg ${className}`}
-    >
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-bg focus:p-3">{locale === 'bg' ? 'Към съдържанието' : 'Skip to content'}</a>
+    <header className={`site-header ${className}`}>
+      <a href="#main-content" className="skip-link">
+        {locale === 'bg' ? 'Към съдържанието' : 'Skip to content'}
+      </a>
       <AnnouncementBar />
-      <div className="flex h-[var(--header-height)] items-center justify-between px-[var(--page-gutter)]">
-        <Link href="/" onClick={closeMenu} className="relative z-30 -ml-2 transition-opacity hover:opacity-60">
+      <div className="header-inner">
+        <Link href="/" onClick={closeMenu} className="header-logo">
           <Logo />
         </Link>
 
-        <nav aria-label="Primary navigation" className="hidden items-center gap-10 md:flex">
-          <Link href="/" aria-current={pathname === '/' ? 'page' : undefined} className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary aria-[current=page]:underline underline-offset-8">
+        <nav aria-label="Primary navigation" className="header-nav">
+          <Link
+            href="/"
+            aria-current={pathname === '/' ? 'page' : undefined}
+            className="header-nav-link"
+          >
             {t.home}
           </Link>
-          <Link href="/gallery" aria-current={pathname.startsWith('/gallery') ? 'page' : undefined} className="text-sm tracking-[0.12em] text-text transition-colors hover:text-text-secondary aria-[current=page]:underline underline-offset-8">
+          <Link
+            href="/gallery"
+            aria-current={pathname.startsWith('/gallery') ? 'page' : undefined}
+            className="header-nav-link"
+          >
             {t.gallery}
           </Link>
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="header-tools">
           <LanguageSwitcher />
           <ThemeSwitcher />
         </div>
@@ -84,25 +104,25 @@ export default function AppHeader({ className = '' }: AppHeaderProps) {
           aria-controls="mobile-menu"
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          className="relative z-30 flex h-10 w-10 items-center justify-center md:hidden"
+          className="menu-toggle"
           onClick={() => setIsMenuOpen((open) => !open)}
         >
           <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
-          <span className={`absolute h-px w-6 bg-text transition-transform ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
-          <span className={`absolute h-px w-6 bg-text transition-transform ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
+          <span className={`menu-line ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+          <span className={`menu-line ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
         </button>
 
         {isMenuOpen && (
-          <div ref={menuPanel} id="mobile-menu" className="fixed inset-0 z-20 flex flex-col bg-bg px-6 pb-10 pt-32 md:hidden">
-            <nav aria-label="Mobile navigation" className="flex flex-col gap-6 border-y editorial-rule py-8">
-              <Link href="/" onClick={closeMenu} className="font-heading text-5xl leading-none">
+          <div ref={menuPanel} id="mobile-menu" className="mobile-menu">
+            <nav aria-label="Mobile navigation" className="mobile-menu-nav">
+              <Link href="/" onClick={closeMenu} className="mobile-menu-link">
                 {t.home}
               </Link>
-              <Link href="/gallery" onClick={closeMenu} className="font-heading text-5xl leading-none">
+              <Link href="/gallery" onClick={closeMenu} className="mobile-menu-link">
                 {t.gallery}
               </Link>
             </nav>
-            <div className="mt-auto flex items-center justify-between border-t editorial-rule pt-6">
+            <div className="mobile-menu-tools">
               <LanguageSwitcher />
               <ThemeSwitcher />
             </div>

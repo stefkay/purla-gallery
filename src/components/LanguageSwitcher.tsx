@@ -12,10 +12,8 @@ export default function LanguageSwitcher() {
           key={locale}
           href={asPath}
           locale={locale}
-          className={`text-xs tracking-[0.12em] transition-colors duration-200 ${
-            currentLocale === locale
-              ? 'text-text'
-              : 'text-text-secondary hover:text-text'
+          className={`language-link ${
+            currentLocale === locale ? 'text-text' : 'text-text-secondary hover:text-text'
           }`}
           aria-current={currentLocale === locale ? 'page' : undefined}
         >
