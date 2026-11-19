@@ -1,4 +1,5 @@
 import { LocalizedNumber, LocalizedString } from '@/types/locale';
+import { SanityImage } from '@/types/image';
 
 export type Product = {
   _id: string;
@@ -7,8 +8,8 @@ export type Product = {
   description: LocalizedString;
   metaTitle?: LocalizedString;
   metaDescription?: LocalizedString;
-  images: { asset: { _ref: string; url?: string }; alt?: string }[];
-  thumbnail: { asset: { _ref: string } };
+  images: SanityImage[];
+  thumbnail?: SanityImage;
   price: LocalizedNumber;
   productNumber: string;
   availability: 'in_stock' | 'preorder' | 'out_of_stock';

@@ -2,13 +2,10 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { urlFor } from '@/sanity/lib/imageUrl';
 
-type GalleryImage = {
-  asset: { _ref: string };
-  alt?: string;
-};
+import { SanityImage } from '@/types/image';
 
 type ImageLightboxProps = {
-  images: GalleryImage[];
+  images: SanityImage[];
   title: string;
 };
 
@@ -62,7 +59,7 @@ export default function ImageLightbox({ images, title }: ImageLightboxProps) {
       <div className="grid grid-cols-2 gap-2 sm:gap-3">
         {images.map((image, index) => (
           <button
-            key={`${image.asset._ref}-${index}`}
+            key={image._key || `${image.asset._ref}-${index}`}
             type="button"
             className="group relative aspect-[4/5] overflow-hidden bg-secondary text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-text"
             onClick={(event) => { triggerRef.current = event.currentTarget; setActiveIndex(index); }}

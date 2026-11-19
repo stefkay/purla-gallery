@@ -1,3 +1,16 @@
+const imageFields = /* groq */ `
+  _key,
+  alt,
+  crop,
+  hotspot,
+  asset {
+    _type,
+    _ref,
+    "url": @->url,
+    "metadata": @->metadata { dimensions { width, height, aspectRatio } }
+  }
+`;
+
 export const productsQuery = /* groq */ `
  *[_type == "product"]{
     _id,
@@ -17,7 +30,7 @@ export const productsQuery = /* groq */ `
       title,
       slug
     },
-    images[]{asset->{url}, alt}
+    images[]{${imageFields}}
   }
 `;
 
@@ -33,8 +46,8 @@ export const productQuery = `
       size,
       productNumber,
       availability,
-      images[]{asset->{url}, alt},
-      thumbnail{asset->{url}, alt},
+      images[]{${imageFields}},
+      thumbnail{${imageFields}},
       materials,
       tags,
       category->{
